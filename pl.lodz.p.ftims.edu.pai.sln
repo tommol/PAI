@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.adm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.branch", "pl.lodz.p.ftims.edu.pai.branch\pl.lodz.p.ftims.edu.pai.branch.csproj", "{36739B88-5229-44BA-A63C-B0F4B3AF5E5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.dal", "pl.lodz.p.lftims.edu.pa.dal\pl.lodz.p.ftims.edu.pai.dal.csproj", "{06BF802D-64BC-4E79-B454-553F1FD98485}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.entity", "pl.lodz.p.ftims.edu.pai.entity\pl.lodz.p.ftims.edu.pai.entity.csproj", "{608BE4FD-8CAA-481C-BDB1-CE19FB54BCAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{36739B88-5229-44BA-A63C-B0F4B3AF5E5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36739B88-5229-44BA-A63C-B0F4B3AF5E5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36739B88-5229-44BA-A63C-B0F4B3AF5E5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06BF802D-64BC-4E79-B454-553F1FD98485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06BF802D-64BC-4E79-B454-553F1FD98485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06BF802D-64BC-4E79-B454-553F1FD98485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06BF802D-64BC-4E79-B454-553F1FD98485}.Release|Any CPU.Build.0 = Release|Any CPU
+		{608BE4FD-8CAA-481C-BDB1-CE19FB54BCAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{608BE4FD-8CAA-481C-BDB1-CE19FB54BCAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{608BE4FD-8CAA-481C-BDB1-CE19FB54BCAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{608BE4FD-8CAA-481C-BDB1-CE19FB54BCAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
