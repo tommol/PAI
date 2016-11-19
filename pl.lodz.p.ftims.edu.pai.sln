@@ -21,6 +21,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.cen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.branch", "pl.lodz.p.ftims.edu.pai.branch\pl.lodz.p.ftims.edu.pai.branch.csproj", "{E2E36DA5-0EB6-429A-BD4F-FE35F8B19025}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F8E49FA0-9D5E-42FA-BF58-F7E13ADD362D}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
