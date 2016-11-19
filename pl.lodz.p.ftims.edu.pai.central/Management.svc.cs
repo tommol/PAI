@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
+using pl.lodz.p.ftims.edu.pai.central.dto;
+using pl.lodz.p.ftims.edu.pai.central.BusinessService;
 
 namespace pl.lodz.p.ftims.edu.pai.central
 {
@@ -12,22 +9,156 @@ namespace pl.lodz.p.ftims.edu.pai.central
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Management : IManagement
     {
-        public string GetData(int value)
+        private IGeneralManagement businessService;
+
+        public Management(IGeneralManagement businessService)
         {
-            return string.Format("You entered: {0}", value);
+            this.businessService = businessService;
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public List<Employee> AddSubordinate(string employeeId, string subordinateId)
         {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            throw new NotImplementedException();
+        }
+
+        public Employee CreateEmployee(CreateEmployee createEmployee)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Project CreateProject(CreateProject createProject)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task CreateTask(CreateTask createTask)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteEmployee(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteProject(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Employee> DeleteSubordinate(string employeeId, string subordinateId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteTask(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Employee GetEmployee(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Employee> GetEmployees()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Employee> GetEmployeeSubordinates(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Timesheet> GetEmployeeTimesheetsForPeriod(string id, string start, string end)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Project> GetManagedProjects(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Project GetProject(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Employee GetProjectManager(string projectId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Project> GetProjects()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Timesheet> GetProjectTimesheetsForPeriod(string id, string start, string end)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task GetTask(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Task> GetTasks()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Timesheet GetTimesheet(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Audit> GetTimesheetHistory(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Timesheet> GetTimesheets()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Timesheet> GetTimesheetsNeedAction(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Project> QueryForProjects(string query)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Task> QueryForTaks(string query)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetProjectManager(string projectId, string employeeId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Employee UpdateEmployee(string id, Employee project)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Project UpdateProject(string id, Project project)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateTask(string id, Task project)
+        {
+            throw new NotImplementedException();
         }
     }
 }

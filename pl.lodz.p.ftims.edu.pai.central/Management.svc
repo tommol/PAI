@@ -1,1 +1,2 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="pl.lodz.p.ftims.edu.pai.central.Management" CodeBehind="Management.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="pl.lodz.p.ftims.edu.pai.central.Management" CodeBehind="Management.svc.cs"
+    Factory="Castle.Facilities.WcfIntegration.DefaultServiceHostFactory, Castle.Facilities.WcfIntegration" %>

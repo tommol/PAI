@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audit.cs" />
     <Compile Include="CreateEmployee.cs" />
     <Compile Include="CreateProject.cs" />
     <Compile Include="CreateTask.cs" />

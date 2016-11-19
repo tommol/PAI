@@ -1,13 +1,8 @@
 ﻿using pl.lodz.p.ftims.edu.pai.branch.dto;
-using pl.lodz.p.ftims.edu.pai.dto;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
-using System.Text;
 
 namespace pl.lodz.p.ftims.edu.pai.branch
 {
