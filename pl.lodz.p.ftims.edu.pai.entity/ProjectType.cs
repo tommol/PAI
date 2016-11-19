@@ -1,4 +1,4 @@
-﻿namespace pl.lodz.p.ftims.edu.pai.entity
+﻿namespace pl.lodz.p.ftims.edu.pai.branch.entity
 {
     public enum ProjectType
     {

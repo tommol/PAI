@@ -3,17 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.central", "pl.lodz.p.ftims.edu.pai.central\pl.lodz.p.ftims.edu.pai.central.csproj", "{F3F20F98-1F69-42E9-AF79-3472DE695778}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.dto", "pl.lodz.p.ftims.edu.pai.dto\pl.lodz.p.ftims.edu.pai.dto.csproj", "{7C46B87A-F25E-448B-B56B-FE5717F8257A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.branch.dto", "pl.lodz.p.ftims.edu.pai.dto\pl.lodz.p.ftims.edu.pai.branch.dto.csproj", "{7C46B87A-F25E-448B-B56B-FE5717F8257A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.admin", "pl.lodz.p.ftims.edu.pai.admin\pl.lodz.p.ftims.edu.pai.admin.csproj", "{743A49DB-D392-4BE7-8252-5F27E10C9E54}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.branch", "pl.lodz.p.ftims.edu.pai.branch\pl.lodz.p.ftims.edu.pai.branch.csproj", "{36739B88-5229-44BA-A63C-B0F4B3AF5E5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.dal", "pl.lodz.p.lftims.edu.pa.dal\pl.lodz.p.ftims.edu.pai.dal.csproj", "{06BF802D-64BC-4E79-B454-553F1FD98485}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.branch.dal", "pl.lodz.p.lftims.edu.pa.dal\pl.lodz.p.ftims.edu.pai.branch.dal.csproj", "{06BF802D-64BC-4E79-B454-553F1FD98485}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.entity", "pl.lodz.p.ftims.edu.pai.entity\pl.lodz.p.ftims.edu.pai.entity.csproj", "{608BE4FD-8CAA-481C-BDB1-CE19FB54BCAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.branch.entity", "pl.lodz.p.ftims.edu.pai.entity\pl.lodz.p.ftims.edu.pai.branch.entity.csproj", "{608BE4FD-8CAA-481C-BDB1-CE19FB54BCAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.central", "pl.lodz.p.ftims.edu.pai.central\pl.lodz.p.ftims.edu.pai.central.csproj", "{F1A06073-65A1-4C0B-846E-1CA0A912BD44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.central.dal", "pl.lodz.p.ftims.edu.pai.central.dal\pl.lodz.p.ftims.edu.pai.central.dal.csproj", "{E79221E1-9044-451F-A7FE-51E7EDF9E31C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.central.entity", "pl.lodz.ftims.edu.pai.central.entity\pl.lodz.p.ftims.edu.pai.central.entity.csproj", "{B87B5452-5356-4AD5-941E-F2337D3E11D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.central.dto", "pl.lodz.p.ftims.edu.pai.central.dto\pl.lodz.p.ftims.edu.pai.central.dto.csproj", "{B30D6591-6A03-485D-A35D-F9AC94DE7472}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F3F20F98-1F69-42E9-AF79-3472DE695778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3F20F98-1F69-42E9-AF79-3472DE695778}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3F20F98-1F69-42E9-AF79-3472DE695778}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3F20F98-1F69-42E9-AF79-3472DE695778}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7C46B87A-F25E-448B-B56B-FE5717F8257A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7C46B87A-F25E-448B-B56B-FE5717F8257A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C46B87A-F25E-448B-B56B-FE5717F8257A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +47,22 @@ Global
 		{608BE4FD-8CAA-481C-BDB1-CE19FB54BCAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{608BE4FD-8CAA-481C-BDB1-CE19FB54BCAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{608BE4FD-8CAA-481C-BDB1-CE19FB54BCAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1A06073-65A1-4C0B-846E-1CA0A912BD44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1A06073-65A1-4C0B-846E-1CA0A912BD44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1A06073-65A1-4C0B-846E-1CA0A912BD44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1A06073-65A1-4C0B-846E-1CA0A912BD44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E79221E1-9044-451F-A7FE-51E7EDF9E31C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E79221E1-9044-451F-A7FE-51E7EDF9E31C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E79221E1-9044-451F-A7FE-51E7EDF9E31C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E79221E1-9044-451F-A7FE-51E7EDF9E31C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B87B5452-5356-4AD5-941E-F2337D3E11D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B87B5452-5356-4AD5-941E-F2337D3E11D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B87B5452-5356-4AD5-941E-F2337D3E11D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B87B5452-5356-4AD5-941E-F2337D3E11D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B30D6591-6A03-485D-A35D-F9AC94DE7472}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B30D6591-6A03-485D-A35D-F9AC94DE7472}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B30D6591-6A03-485D-A35D-F9AC94DE7472}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B30D6591-6A03-485D-A35D-F9AC94DE7472}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

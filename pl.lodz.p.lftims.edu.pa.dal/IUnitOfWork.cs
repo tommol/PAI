@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace pl.lodz.p.ftims.edu.pai.dal
+namespace pl.lodz.p.ftims.edu.pai.branch.dal
 {
     public interface IUnitOfWork : IDisposable
     {

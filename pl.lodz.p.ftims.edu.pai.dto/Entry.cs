@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace pl.lodz.p.ftims.edu.pai.dto
+namespace pl.lodz.p.ftims.edu.pai.branch.dto
 {
     [DataContract]
     public class Entry

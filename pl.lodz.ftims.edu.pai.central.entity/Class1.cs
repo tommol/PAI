@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace pl.lodz.p.ftims.edu.pai.branch.entity
+namespace pl.lodz.ftims.edu.pai.central.entity
 {
-    public class Audit
+    public class Class1
     {
     }
 }

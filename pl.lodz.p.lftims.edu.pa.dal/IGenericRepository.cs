@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace pl.lodz.p.ftims.edu.pai.dal
+namespace pl.lodz.p.ftims.edu.pai.branch.dal
 {
     public interface IGenericRepository<T> where T : class
     {
