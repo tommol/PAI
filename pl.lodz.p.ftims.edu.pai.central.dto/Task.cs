@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace pl.lodz.p.ftims.edu.pai.branch.dto
+namespace pl.lodz.p.ftims.edu.pai.central.dto
 {
     [DataContract]
     public class Task
