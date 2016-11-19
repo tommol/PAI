@@ -1,6 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace pl.lodz.p.ftims.edu.pai.branch.entity
+namespace pl.lodz.p.ftims.edu.pai.central.entity
 {
     public class Employee
     {
@@ -14,5 +18,6 @@ namespace pl.lodz.p.ftims.edu.pai.branch.entity
         public virtual List<Employee> Subordinates { get; set; }
         public virtual Employee Manager { get; set; }
         public virtual List<Audit> Actions { get; set; }
+        public virtual Branch Branch { get; set; }
     }
 }

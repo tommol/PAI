@@ -61,14 +61,18 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Service1.svc" />
+    <Content Include="Global.asax" />
+    <Content Include="Management.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Service1.svc.cs">
-      <DependentUpon>Service1.svc</DependentUpon>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IService1.cs" />
+    <Compile Include="Management.svc.cs">
+      <DependentUpon>Management.svc</DependentUpon>
+    </Compile>
+    <Compile Include="IManagement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +85,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\pl.lodz.p.ftims.edu.pai.central.dto\pl.lodz.p.ftims.edu.pai.central.dto.csproj">
+      <Project>{B30D6591-6A03-485D-A35D-F9AC94DE7472}</Project>
+      <Name>pl.lodz.p.ftims.edu.pai.central.dto</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

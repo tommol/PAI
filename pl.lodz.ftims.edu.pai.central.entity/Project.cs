@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace pl.lodz.p.ftims.edu.pai.branch.entity
+namespace pl.lodz.p.ftims.edu.pai.central.entity
 {
     public class Project
     {

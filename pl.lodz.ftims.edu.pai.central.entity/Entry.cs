@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace pl.lodz.p.ftims.edu.pai.branch.entity
+namespace pl.lodz.p.ftims.edu.pai.central.entity
 {
     public class Entry
     {

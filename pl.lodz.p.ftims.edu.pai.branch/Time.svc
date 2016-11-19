@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="pl.lodz.p.ftims.edu.pai.branch.Time" CodeBehind="Time.svc.cs" %>
