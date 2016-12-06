@@ -8,26 +8,26 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
     {
         Project CreateProject(CreateProject project);
         Project GetProject(int id);
-        List<Project> GetProjects();
+        List<Project> GetProjects(int start = 0, int limit = 0);
         void DeleteProject(int id);
         Project UpdateProject(int id, Project project);
-        List<Project> FindProjects(string query);
+        List<Project> FindProjects(string query, int start = 0, int limit = 0);
         List<Project> ProjectsManagedBy(int id);
         Employee GetProjectManager(int id);
         void SetProjectManager(int iprojectId, int employeeId);
 
         dto.Task CreateTask(CreateTask task);
         dto.Task GetTask(int id);
-        List<dto.Task> GetTasks();
+        List<dto.Task> GetTasks(int start = 0, int limit = 0);
         void DeleteTask(int id);
         dto.Task UpdateTask(int id, dto.Task task);
-        List<dto.Task> FindTasks(string query);
+        List<dto.Task> FindTasks(string query, int start = 0, int limit = 0);
         Employee CreateEmployee(CreateEmployee employee);
         Employee GetEmployee(int id);
-        List<Employee> GetEmployees();
+        List<Employee> GetEmployees(int start = 0, int limit = 0);
         void DeleteEmployee(int id);
         Employee UpdateEmployee(int id, Employee task);
-        List<Employee> GetEmployeeSubordinates(int id);
+        List<Employee> GetEmployeeSubordinates(int id, int start = 0, int limit = 0);
         List<Employee> AddSubordinate(int employeeId, int subordinateId);
         List<Employee> DeleteSubordinate(int employeeId, int subordinateId);
         List<Timesheet> GetProjectTimesheets(int projectId, DateTime start, DateTime end);

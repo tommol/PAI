@@ -41,6 +41,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
       <Private>True</Private>
@@ -53,6 +57,7 @@
       <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.Services" />
     <Reference Include="System.IdentityModel" />
@@ -87,6 +92,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AutoMapperConfig.cs" />
+    <Compile Include="Infrastructure\RemoveSvc.cs" />
     <Compile Include="Management.svc.cs">
       <DependentUpon>Management.svc</DependentUpon>
     </Compile>
@@ -107,6 +114,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\pl.lodz.ftims.edu.pai.central.entity\pl.lodz.p.ftims.edu.pai.central.entity.csproj">
+      <Project>{B87B5452-5356-4AD5-941E-F2337D3E11D9}</Project>
+      <Name>pl.lodz.p.ftims.edu.pai.central.entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\pl.lodz.p.ftims.edu.pai.central.dal\pl.lodz.p.ftims.edu.pai.central.dal.csproj">
       <Project>{e79221e1-9044-451f-a7fe-51e7edf9e31c}</Project>
       <Name>pl.lodz.p.ftims.edu.pai.central.dal</Name>
@@ -115,6 +126,9 @@
       <Project>{B30D6591-6A03-485D-A35D-F9AC94DE7472}</Project>
       <Name>pl.lodz.p.ftims.edu.pai.central.dto</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

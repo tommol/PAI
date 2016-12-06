@@ -1,18 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.SessionState;
+﻿using AutoMapper;
+using AutoMapper.Configuration;
+using Castle.Facilities.WcfIntegration;
+using Castle.Windsor;
+using System;
+
 
 namespace pl.lodz.p.ftims.edu.pai.central
 {
     public class Global : System.Web.HttpApplication
     {
+        static IWindsorContainer container;
 
         protected void Application_Start(object sender, EventArgs e)
         {
-
+            container = new WindsorContainer();
+            container.AddFacility<WcfFacility>();
+            container.Install(new WindsorInstaller());
+            AutoMapperConfig.RegisterMappings();
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -44,5 +48,7 @@ namespace pl.lodz.p.ftims.edu.pai.central
         {
 
         }
+
+       
     }
 }

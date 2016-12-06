@@ -61,12 +61,12 @@ namespace pl.lodz.p.ftims.edu.pai.central
             throw new NotImplementedException();
         }
 
-        public List<Employee> GetEmployees()
+        public List<Employee> GetEmployees(int start = 0, int limit = 0)
         {
             throw new NotImplementedException();
         }
 
-        public List<Employee> GetEmployeeSubordinates(string id)
+        public List<Employee> GetEmployeeSubordinates(string id, int start = 0, int limit = 0)
         {
             throw new NotImplementedException();
         }
@@ -76,7 +76,7 @@ namespace pl.lodz.p.ftims.edu.pai.central
             throw new NotImplementedException();
         }
 
-        public List<Project> GetManagedProjects(string id)
+        public List<Project> GetManagedProjects(string id, int start = 0, int limit = 0)
         {
             throw new NotImplementedException();
         }
@@ -91,7 +91,7 @@ namespace pl.lodz.p.ftims.edu.pai.central
             throw new NotImplementedException();
         }
 
-        public List<Project> GetProjects()
+        public List<Project> GetProjects(int start = 0, int limit = 0)
         {
             throw new NotImplementedException();
         }
@@ -106,7 +106,7 @@ namespace pl.lodz.p.ftims.edu.pai.central
             throw new NotImplementedException();
         }
 
-        public List<Task> GetTasks()
+        public List<Task> GetTasks( int start = 0, int limit = 0)
         {
             throw new NotImplementedException();
         }
@@ -116,27 +116,27 @@ namespace pl.lodz.p.ftims.edu.pai.central
             throw new NotImplementedException();
         }
 
-        public List<Audit> GetTimesheetHistory(string id)
+        public List<Audit> GetTimesheetHistory(string id, int start = 0, int limit = 0)
         {
             throw new NotImplementedException();
         }
 
-        public List<Timesheet> GetTimesheets()
+        public List<Timesheet> GetTimesheets(int start = 0, int limit = 0)
         {
             throw new NotImplementedException();
         }
 
-        public List<Timesheet> GetTimesheetsNeedAction(string id)
+        public List<Timesheet> GetTimesheetsNeedAction(string id, int start = 0, int limit = 0)
         {
             throw new NotImplementedException();
         }
 
-        public List<Project> QueryForProjects(string query)
+        public List<Project> QueryForProjects(string query, int start = 0, int limit = 0)
         {
             throw new NotImplementedException();
         }
 
-        public List<Task> QueryForTaks(string query)
+        public List<Task> QueryForTaks(string query, int start = 0, int limit = 0)
         {
             throw new NotImplementedException();
         }

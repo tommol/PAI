@@ -18,14 +18,14 @@ namespace pl.lodz.p.ftims.edu.pai.central
         Project GetProject(string id);
 
         [OperationContract]
-        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/project")]
+        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/project?start={start}&limit={limit}")]
         [Description("Gets list of all projects")]
-        List<Project> GetProjects();
+        List<Project> GetProjects(int start=0, int limit = 0);
 
         [OperationContract]
-        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/employee/{id}/project")]
+        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/employee/{id}/project?start={start}&limit={limit}")]
         [Description("Gets projects managed by specified employee")]
-        List<Project> GetManagedProjects(string id);
+        List<Project> GetManagedProjects(string id, int start = 0, int limit = 0);
 
         [OperationContract]
         [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/project/{id}/timesheets?start={start}&end={end}")]
@@ -33,9 +33,9 @@ namespace pl.lodz.p.ftims.edu.pai.central
         List<Timesheet> GetProjectTimesheetsForPeriod(string id, string start, string end);
 
         [OperationContract]
-        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/search/project?query={query}")]
+        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/search/project?query={query}&start={start}&limit={limit}")]
         [Description("Gets all projects with code or name with specified text")]
-        List<Project> QueryForProjects(string query);
+        List<Project> QueryForProjects(string query, int start = 0, int limit = 0);
 
         [OperationContract]
         [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "POST", UriTemplate = "/project")]
@@ -70,14 +70,14 @@ namespace pl.lodz.p.ftims.edu.pai.central
         Task GetTask(string id);
 
         [OperationContract]
-        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/task")]
+        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/task?start={start}&limit={limit}")]
         [Description("Gets list of all tasks")]
-        List<Task> GetTasks();
+        List<Task> GetTasks(int start = 0, int limit = 0);
 
         [OperationContract]
-        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/search/task?query={query}")]
+        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/search/task?query={query}&start={start}&limit={limit}")]
         [Description("Gets list of all tasks containing text in code or name")]
-        List<Task> QueryForTaks(string query);
+        List<Task> QueryForTaks(string query, int start = 0, int limit = 0);
 
         [OperationContract]
         [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "POST", UriTemplate = "/task")]
@@ -102,14 +102,14 @@ namespace pl.lodz.p.ftims.edu.pai.central
         Employee GetEmployee(string id);
 
         [OperationContract]
-        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/employee")]
+        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/employee?start={start}&limit={limit}")]
         [Description("Gets list of all employees")]
-        List<Employee> GetEmployees();
+        List<Employee> GetEmployees(int start = 0, int limit = 0);
 
         [OperationContract]
-        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/employee/{id}/subordinate")]
+        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/employee/{id}/subordinate?start={start}&limit={limit}")]
         [Description("Gets list of all subordinates of employee")]
-        List<Employee> GetEmployeeSubordinates(string id);
+        List<Employee> GetEmployeeSubordinates(string id, int start = 0, int limit = 0);
 
         [OperationContract]
         [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/employee/{id}/timesheet?start={start}&end={end}")]
@@ -147,19 +147,19 @@ namespace pl.lodz.p.ftims.edu.pai.central
         [Description("Gets specified timesheet")]
         Timesheet GetTimesheet(string id);
         [OperationContract]
-        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/timesheet")]
+        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/timesheet?start={start}&limit={limit}")]
         [Description("Gets list of all timesheets")]
-        List<Timesheet> GetTimesheets();
+        List<Timesheet> GetTimesheets(int start = 0, int limit = 0);
         [OperationContract]
-        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/timesheet/employee/{id}")]
+        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/timesheet/employee/{id}?start={start}&limit={limit}")]
         [Description("Gets list of timesheets which needs action made by employee")]
         //TODO
-        List<Timesheet> GetTimesheetsNeedAction(string id);
+        List<Timesheet> GetTimesheetsNeedAction(string id, int start = 0, int limit = 0);
         [OperationContract]
-        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/timesheet/{id}/history")]
+        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/timesheet/{id}/history?start={start}&limit={limit}")]
         [Description("Gets history of timesheet")]
         //TODO
-        List<Audit> GetTimesheetHistory(string id);
+        List<Audit> GetTimesheetHistory(string id, int start = 0, int limit = 0);
    
 
         #endregion TimesheetMethods

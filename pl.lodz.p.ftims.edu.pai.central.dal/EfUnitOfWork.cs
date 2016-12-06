@@ -12,7 +12,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.dal
         private readonly EfGenericRepository<Audit> _AuditRepo;
         private readonly EfGenericRepository<Employee> _EmployeeRepo;
 
-        public DbSet<Timesheet> Timesheets { get; set; }
+              public DbSet<Timesheet> Timesheets { get; set; }
         public DbSet<Entry> TimeEntries { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Task> Tasks { get; set; }
@@ -67,7 +67,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.dal
             }
         }
 
-        public EfUnitOfWork()
+        public EfUnitOfWork() : base("TimesheetDBAdmin")
         {
             _TimesheetRepo = new EfGenericRepository<Timesheet>(Timesheets);
             _TimeEntryRepo = new EfGenericRepository<Entry>(TimeEntries);
