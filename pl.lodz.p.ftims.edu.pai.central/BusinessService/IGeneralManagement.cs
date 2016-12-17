@@ -33,7 +33,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
         List<Timesheet> GetProjectTimesheets(int projectId, DateTime start, DateTime end);
         List<Timesheet> GetEmployeeTimesheets(int employeeId, DateTime start, DateTime end);
         Timesheet GetTimesheet(int id);
-        List<Timesheet> GeTimesheets(int start = 0, int limit = 0);
+        List<Timesheet> GetTimesheets(int start = 0, int limit = 0);
 
         Branch CreateBranch(CreateBranch project);
         Branch GetBranch(int id);

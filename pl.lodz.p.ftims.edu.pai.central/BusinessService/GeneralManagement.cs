@@ -125,7 +125,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
             return mapper.Map<IEnumerable<entity.Timesheet>, List<Timesheet>>(list);
         }
 
-        public List<Timesheet> GeTimesheets(int start = 0, int limit = 0)
+        public List<Timesheet> GetTimesheets(int start = 0, int limit = 0)
         {
             var list = limit != 0 ? unitOfWork.TimesheetRepository.GetAll().Skip(start).Take(limit) : unitOfWork.TimesheetRepository.GetAll();
             return mapper.Map<IEnumerable<entity.Timesheet>, List<Timesheet>>(list);
@@ -214,34 +214,49 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
             return mapper.Map<Task>(taskEntity);
         }
 
-        public Branch CreateBranch(CreateBranch project)
+        public Branch CreateBranch(CreateBranch branch)
         {
-            throw new NotImplementedException();
+            entity.Branch entity = mapper.Map<entity.Branch>(branch);
+            unitOfWork.BranchRepository.Add(entity);
+            unitOfWork.Commit();
+            return mapper.Map<dto.Branch>(entity);
         }
 
         public Branch GetBranch(int id)
         {
-            throw new NotImplementedException();
+            var branch = unitOfWork.BranchRepository.GetById(id);
+            return mapper.Map<Branch>(branch);
         }
 
         public List<Branch> GetBranches(int start = 0, int limit = 0)
         {
-            throw new NotImplementedException();
+            var list = limit != 0 ? unitOfWork.BranchRepository.GetAll().Skip(start).Take(limit) : unitOfWork.BranchRepository.GetAll();
+            return mapper.Map<IEnumerable<entity.Branch>, List<Branch>>(list);
         }
 
         public void DeleteBranch(int id)
         {
-            throw new NotImplementedException();
+            var branch = unitOfWork.BranchRepository.GetById(id);
+            if (branch.Employees.Count > 0)
+            {
+                throw new Exception("Cannot Delete Entity");
+            }
+            unitOfWork.BranchRepository.Delete(branch);
+            unitOfWork.Commit();
         }
 
-        public Branch UpdateBranch(int id, Branch project)
+        public Branch UpdateBranch(int id, Branch branch)
         {
-            throw new NotImplementedException();
+            var branchEntity = unitOfWork.BranchRepository.GetById(id);
+            branchEntity.Uri = branch.Uri;
+            branchEntity.Name = branch.Name;
+            return mapper.Map<Branch>(branchEntity);
         }
 
         public List<Employee> EmployeesInBranch(int id, int start = 0, int limit = 0)
         {
-            throw new NotImplementedException();
+            var list = limit != 0 ? unitOfWork.BranchRepository.GetById(id).Employees.Skip(start).Take(limit) : unitOfWork.BranchRepository.GetById(id).Employees;
+            return mapper.Map<IEnumerable<entity.Employee>, List<Employee>>(list);
         }
     }
 }

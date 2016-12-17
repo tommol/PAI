@@ -184,7 +184,7 @@ namespace pl.lodz.p.ftims.edu.pai.central
         [OperationContract]
         [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "PUT", UriTemplate = "/branch/{id}")]
         [Description("Updates a branch")]
-        Branch UpdateProject(string id, Branch project);
+        Branch UpdateBranch(string id, Branch project);
 
         #endregion BranchMethods
 

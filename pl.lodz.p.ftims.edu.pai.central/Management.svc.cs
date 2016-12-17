@@ -5,8 +5,6 @@ using pl.lodz.p.ftims.edu.pai.central.BusinessService;
 
 namespace pl.lodz.p.ftims.edu.pai.central
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Management : IManagement
     {
         private IGeneralManagement businessService;
@@ -18,102 +16,119 @@ namespace pl.lodz.p.ftims.edu.pai.central
 
         public List<Employee> AddSubordinate(string employeeId, string subordinateId)
         {
-            throw new NotImplementedException();
+            int empId = int.Parse(employeeId);
+            int subId = int.Parse(subordinateId);
+            return businessService.AddSubordinate(empId, subId);
         }
 
         public Branch CreateBranch(CreateBranch createBranch)
         {
-            throw new NotImplementedException();
+            return businessService.CreateBranch(createBranch);
         }
 
         public Employee CreateEmployee(CreateEmployee createEmployee)
         {
-            throw new NotImplementedException();
+            return businessService.CreateEmployee(createEmployee);
         }
 
         public Project CreateProject(CreateProject createProject)
         {
-            throw new NotImplementedException();
+            return businessService.CreateProject(createProject);
         }
 
         public Task CreateTask(CreateTask createTask)
         {
-            throw new NotImplementedException();
+            return businessService.CreateTask(createTask);
         }
 
         public void DeleteBranch(string id)
         {
-            throw new NotImplementedException();
+            int branchId = int.Parse(id);
+            businessService.DeleteBranch(branchId);
         }
 
         public void DeleteEmployee(string id)
         {
-            throw new NotImplementedException();
+            int employeeId = int.Parse(id);
+            businessService.DeleteEmployee(employeeId);
         }
 
         public void DeleteProject(string id)
         {
-            throw new NotImplementedException();
+            int projectId = int.Parse(id);
+            businessService.DeleteProject(projectId);
         }
 
         public List<Employee> DeleteSubordinate(string employeeId, string subordinateId)
         {
-            throw new NotImplementedException();
+            int empId = int.Parse(employeeId);
+            int subId = int.Parse(subordinateId);
+            return businessService.DeleteSubordinate(empId, subId);
         }
 
         public void DeleteTask(string id)
         {
-            throw new NotImplementedException();
+            int taskId = int.Parse(id);
+            businessService.DeleteTask(taskId);
         }
 
         public Branch GetBranch(string id)
         {
-            throw new NotImplementedException();
+            int branchId = int.Parse(id);
+            return businessService.GetBranch(branchId);
         }
 
         public List<Branch> GetBranchess(int start = 0, int limit = 0)
         {
-            throw new NotImplementedException();
+            return businessService.GetBranches(start, limit);
         }
 
         public Employee GetEmployee(string id)
         {
-            throw new NotImplementedException();
+            int employeeId = int.Parse(id);
+            return businessService.GetEmployee(employeeId);
         }
 
         public List<Employee> GetEmployees(int start = 0, int limit = 0)
         {
-            throw new NotImplementedException();
+            return businessService.GetEmployees(start, limit);
         }
 
         public List<Employee> GetEmployeeSubordinates(string id, int start = 0, int limit = 0)
         {
-            throw new NotImplementedException();
+            int employeeId = int.Parse(id);
+            return businessService.GetEmployeeSubordinates(employeeId, start, limit);
         }
 
         public List<Timesheet> GetEmployeeTimesheetsForPeriod(string id, string start, string end)
         {
-            throw new NotImplementedException();
+            int employeeId = int.Parse(id);
+            DateTime startDate = DateTime.Parse(start);
+            DateTime endDate = DateTime.Parse(end);
+            return businessService.GetEmployeeTimesheets(employeeId, startDate, endDate);
         }
 
         public List<Project> GetManagedProjects(string id, int start = 0, int limit = 0)
         {
-            throw new NotImplementedException();
+            int employeeId = int.Parse(id);
+            return businessService.ProjectsManagedBy(employeeId);
         }
 
         public Project GetProject(string id)
         {
-            throw new NotImplementedException();
+            int projectId = int.Parse(id);
+            return businessService.GetProject(projectId);
         }
 
         public Employee GetProjectManager(string projectId)
         {
-            throw new NotImplementedException();
+            int id = int.Parse(projectId);
+            return businessService.GetProjectManager(id);
         }
 
         public List<Project> GetProjects(int start = 0, int limit = 0)
         {
-            throw new NotImplementedException();
+            return businessService.GetProjects(start, limit);
         }
 
         public List<Timesheet> GetProjectTimesheetsForPeriod(string id, string start, string end)
@@ -123,17 +138,19 @@ namespace pl.lodz.p.ftims.edu.pai.central
 
         public Task GetTask(string id)
         {
-            throw new NotImplementedException();
+            int taskId = int.Parse(id);
+            return businessService.GetTask(taskId);
         }
 
-        public List<Task> GetTasks( int start = 0, int limit = 0)
+        public List<Task> GetTasks(int start = 0, int limit = 0)
         {
-            throw new NotImplementedException();
+            return businessService.GetTasks(start, limit);
         }
 
         public Timesheet GetTimesheet(string id)
         {
-            throw new NotImplementedException();
+            int timesheetId = int.Parse(id);
+            return businessService.GetTimesheet(timesheetId);
         }
 
         public List<Audit> GetTimesheetHistory(string id, int start = 0, int limit = 0)
@@ -143,7 +160,7 @@ namespace pl.lodz.p.ftims.edu.pai.central
 
         public List<Timesheet> GetTimesheets(int start = 0, int limit = 0)
         {
-            throw new NotImplementedException();
+            return businessService.GetTimesheets(start, limit);
         }
 
         public List<Timesheet> GetTimesheetsNeedAction(string id, int start = 0, int limit = 0)
@@ -153,37 +170,43 @@ namespace pl.lodz.p.ftims.edu.pai.central
 
         public List<Project> QueryForProjects(string query, int start = 0, int limit = 0)
         {
-            throw new NotImplementedException();
+            return businessService.FindProjects(query, start, limit);
         }
 
         public List<Task> QueryForTaks(string query, int start = 0, int limit = 0)
         {
-            throw new NotImplementedException();
+            return businessService.FindTasks(query, start, limit);
         }
 
         public void SetProjectManager(string projectId, string employeeId)
         {
-            throw new NotImplementedException();
+            int empId = int.Parse(employeeId);
+            int projId = int.Parse(projectId);
+            businessService.SetProjectManager(projId, empId);
         }
 
         public Employee UpdateEmployee(string id, Employee project)
         {
-            throw new NotImplementedException();
+            int employeeId = int.Parse(id);
+            return businessService.UpdateEmployee(employeeId, project);
         }
 
-        public Branch UpdateProject(string id, Branch project)
+        public Branch UpdateBranch(string id, Branch project)
         {
-            throw new NotImplementedException();
+            int branchId = int.Parse(id);
+            return businessService.UpdateBranch(branchId, project);
         }
 
         public Project UpdateProject(string id, Project project)
         {
-            throw new NotImplementedException();
+            int projectId = int.Parse(id);
+            return businessService.UpdateProject(projectId, project);
         }
 
         public Task UpdateTask(string id, Task project)
         {
-            throw new NotImplementedException();
+            int taskId = int.Parse(id);
+            return businessService.UpdateTask(taskId, project);
         }
     }
 }

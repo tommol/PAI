@@ -11,6 +11,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.dal
         IGenericRepository<Task> TaskRepository { get; }
         IGenericRepository<Employee> EmployeeRepository { get; }
         IGenericRepository<Audit> AuditRepository { get; }
+        IGenericRepository<Branch> BranchRepository { get; }
 
         void Commit();
     }
