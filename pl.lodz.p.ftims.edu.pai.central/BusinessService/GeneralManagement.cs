@@ -5,6 +5,8 @@ using pl.lodz.p.ftims.edu.pai.central.dto;
 using pl.lodz.p.ftims.edu.pai.central.dal;
 using AutoMapper;
 using pl.lodz.p.ftims.edu.pai.central.Infrastructure;
+using pl.lodz.p.ftims.edu.pai.central.BusinessService.Exceptions;
+
 
 namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
 {
@@ -50,7 +52,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
             var employee = unitOfWork.EmployeeRepository.GetById(id);
             if (employee.Subordinates.Count > 0)
             {
-                throw new Exception("Cannot Delete Entity");
+                throw new CannotDeleteEmployeeException("Cannot delete employee with assigned subordinates. Please Rrmove relation than retry");
             }
             unitOfWork.EmployeeRepository.Delete(employee);
             unitOfWork.Commit();
@@ -119,12 +121,14 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
 
         public List<Timesheet> GetEmployeeTimesheets(int employeeId, DateTime start, DateTime end)
         {
-            throw new NotImplementedException();
+            var list = unitOfWork.TimesheetRepository.Find(x => x.Applicant.Id == employeeId && (x.StartDay>= start && x.EndDay <= end));
+            return mapper.Map<IEnumerable<entity.Timesheet>, List<Timesheet>>(list);
         }
 
-        public List<Timesheet> GeTimesheets()
+        public List<Timesheet> GeTimesheets(int start = 0, int limit = 0)
         {
-            throw new NotImplementedException();
+            var list = limit != 0 ? unitOfWork.TimesheetRepository.GetAll().Skip(start).Take(limit) : unitOfWork.TimesheetRepository.GetAll();
+            return mapper.Map<IEnumerable<entity.Timesheet>, List<Timesheet>>(list);
         }
 
         public Project GetProject(int id)
@@ -135,7 +139,8 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
 
         public Employee GetProjectManager(int id)
         {
-            throw new NotImplementedException();
+            var employee = unitOfWork.ProjectRepository.GetById(id).ProjectManager;
+            return mapper.Map<Employee>(employee);
         }
 
         public List<Project> GetProjects(int start = 0, int limit = 0)
@@ -146,7 +151,8 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
 
         public List<Timesheet> GetProjectTimesheets(int projectId, DateTime start, DateTime end)
         {
-            throw new NotImplementedException();
+            var list = unitOfWork.TimesheetRepository.Find(x => x.Entries.Any(y => y.Project.Id == projectId) && (x.StartDay >= start && x.EndDay <= end));
+            return mapper.Map<IEnumerable<entity.Timesheet>, List<Timesheet>>(list);
         }
 
         public Task GetTask(int id)
@@ -163,30 +169,77 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
 
         public Timesheet GetTimesheet(int id)
         {
-            throw new NotImplementedException();
+            var timesheet = unitOfWork.TimesheetRepository.GetById(id);
+            return mapper.Map<Timesheet>(timesheet);
         }
 
         public List<Project> ProjectsManagedBy(int id)
         {
-            throw new NotImplementedException();
+            var list = unitOfWork.ProjectRepository.Find(x => x.ProjectManager.Id == id);
+            return mapper.Map<IEnumerable<entity.Project>, List<Project>>(list);
         }
 
         public void SetProjectManager(int iprojectId, int employeeId)
         {
-            throw new NotImplementedException();
+            var project = unitOfWork.ProjectRepository.GetById(iprojectId);
+            var manager = unitOfWork.EmployeeRepository.GetById(employeeId);
+            project.ProjectManager = manager;
+            unitOfWork.Commit();
         }
 
-        public Employee UpdateEmployee(int id, Employee task)
+        public Employee UpdateEmployee(int id, Employee employee)
         {
-            throw new NotImplementedException();
+            var employeeEntity = unitOfWork.EmployeeRepository.GetById(id);
+            employeeEntity.LastName = employee.LastName;
+            employeeEntity.Name = employee.Name;
+            employeeEntity.Email = employee.Email;
+            unitOfWork.Commit();
+            return mapper.Map<Employee>(employeeEntity);
         }
 
         public Project UpdateProject(int id, Project project)
         {
-            throw new NotImplementedException();
+            var projectEntity = unitOfWork.ProjectRepository.GetById(id);
+            projectEntity.Code = project.Code;
+            projectEntity.Name = project.Name;
+            projectEntity.Type = (entity.ProjectType)project.Type;
+            return mapper.Map<Project>(projectEntity);
         }
 
         public Task UpdateTask(int id, Task task)
+        {
+            var taskEntity = unitOfWork.TaskRepository.GetById(id);
+            taskEntity.Code = task.Code;
+            taskEntity.Name = task.Name;
+            return mapper.Map<Task>(taskEntity);
+        }
+
+        public Branch CreateBranch(CreateBranch project)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Branch GetBranch(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Branch> GetBranches(int start = 0, int limit = 0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteBranch(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Branch UpdateBranch(int id, Branch project)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Employee> EmployeesInBranch(int id, int start = 0, int limit = 0)
         {
             throw new NotImplementedException();
         }

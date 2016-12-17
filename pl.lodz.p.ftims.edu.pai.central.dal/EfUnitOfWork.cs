@@ -11,6 +11,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.dal
         private readonly EfGenericRepository<Task> _TaskRepo;
         private readonly EfGenericRepository<Audit> _AuditRepo;
         private readonly EfGenericRepository<Employee> _EmployeeRepo;
+        private readonly EfGenericRepository<Branch> _BranchRepo;
 
               public DbSet<Timesheet> Timesheets { get; set; }
         public DbSet<Entry> TimeEntries { get; set; }
@@ -18,6 +19,8 @@ namespace pl.lodz.p.ftims.edu.pai.central.dal
         public DbSet<Task> Tasks { get; set; }
         public DbSet<Audit> Audits { get; set; }
         public DbSet<Employee> Employees { get; set; }
+
+        public DbSet<Branch> Branches { get; set; }
 
         public IGenericRepository<Timesheet> TimesheetRepository
         {
@@ -67,6 +70,14 @@ namespace pl.lodz.p.ftims.edu.pai.central.dal
             }
         }
 
+        public IGenericRepository<Branch> BranchRepository
+        {
+            get
+            {
+                return _BranchRepo;
+            }
+        }
+
         public EfUnitOfWork() : base("TimesheetDBAdmin")
         {
             _TimesheetRepo = new EfGenericRepository<Timesheet>(Timesheets);
@@ -75,6 +86,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.dal
             _TaskRepo = new EfGenericRepository<Task>(Tasks);
             _AuditRepo = new EfGenericRepository<Audit>(Audits);
             _EmployeeRepo = new EfGenericRepository<Employee>(Employees);
+            _BranchRepo = new EfGenericRepository<Branch>(Branches);
         }
 
         public void Commit()

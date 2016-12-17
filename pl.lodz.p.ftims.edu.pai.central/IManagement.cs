@@ -6,7 +6,6 @@ using System.ServiceModel.Web;
 
 namespace pl.lodz.p.ftims.edu.pai.central
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
     public interface IManagement
     {
@@ -20,7 +19,7 @@ namespace pl.lodz.p.ftims.edu.pai.central
         [OperationContract]
         [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/project?start={start}&limit={limit}")]
         [Description("Gets list of all projects")]
-        List<Project> GetProjects(int start=0, int limit = 0);
+        List<Project> GetProjects(int start = 0, int limit = 0);
 
         [OperationContract]
         [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/employee/{id}/project?start={start}&limit={limit}")]
@@ -153,17 +152,41 @@ namespace pl.lodz.p.ftims.edu.pai.central
         [OperationContract]
         [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/timesheet/employee/{id}?start={start}&limit={limit}")]
         [Description("Gets list of timesheets which needs action made by employee")]
-        //TODO
         List<Timesheet> GetTimesheetsNeedAction(string id, int start = 0, int limit = 0);
         [OperationContract]
         [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/timesheet/{id}/history?start={start}&limit={limit}")]
         [Description("Gets history of timesheet")]
-        //TODO
         List<Audit> GetTimesheetHistory(string id, int start = 0, int limit = 0);
-   
+
 
         #endregion TimesheetMethods
+        #region BranchMethods
+        [OperationContract]
+        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/branch/{id}")]
+        [Description("Gets specified branch")]
+        Branch GetBranch(string id);
 
+        [OperationContract]
+        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/branch?start={start}&limit={limit}")]
+        [Description("Gets list of all branches")]
+        List<Branch> GetBranchess(int start = 0, int limit = 0);
+
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "POST", UriTemplate = "/branch")]
+        [Description("Adds new branch ")]
+        Branch CreateBranch(CreateBranch createBranch);
+
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "DELETE", UriTemplate = "/branch/{id}")]
+        [Description("Deletes a branch")]
+        void DeleteBranch(string id);
+
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "PUT", UriTemplate = "/branch/{id}")]
+        [Description("Updates a branch")]
+        Branch UpdateProject(string id, Branch project);
+
+        #endregion BranchMethods
 
     }
 

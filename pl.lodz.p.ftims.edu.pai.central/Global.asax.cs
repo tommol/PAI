@@ -2,6 +2,7 @@
 using AutoMapper.Configuration;
 using Castle.Facilities.WcfIntegration;
 using Castle.Windsor;
+using pl.lodz.p.ftims.edu.pai.central.Infrastructure;
 using System;
 
 

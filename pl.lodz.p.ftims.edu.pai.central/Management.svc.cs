@@ -21,6 +21,11 @@ namespace pl.lodz.p.ftims.edu.pai.central
             throw new NotImplementedException();
         }
 
+        public Branch CreateBranch(CreateBranch createBranch)
+        {
+            throw new NotImplementedException();
+        }
+
         public Employee CreateEmployee(CreateEmployee createEmployee)
         {
             throw new NotImplementedException();
@@ -32,6 +37,11 @@ namespace pl.lodz.p.ftims.edu.pai.central
         }
 
         public Task CreateTask(CreateTask createTask)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteBranch(string id)
         {
             throw new NotImplementedException();
         }
@@ -52,6 +62,16 @@ namespace pl.lodz.p.ftims.edu.pai.central
         }
 
         public void DeleteTask(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Branch GetBranch(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Branch> GetBranchess(int start = 0, int limit = 0)
         {
             throw new NotImplementedException();
         }
@@ -147,6 +167,11 @@ namespace pl.lodz.p.ftims.edu.pai.central
         }
 
         public Employee UpdateEmployee(string id, Employee project)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Branch UpdateProject(string id, Branch project)
         {
             throw new NotImplementedException();
         }
