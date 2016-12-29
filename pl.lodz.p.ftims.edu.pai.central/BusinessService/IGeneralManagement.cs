@@ -41,5 +41,6 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
         void DeleteBranch(int id);
         Branch UpdateBranch(int id, Branch project);
         List<Employee> EmployeesInBranch(int id, int start = 0, int limit = 0);
+        List<Timesheet> GetTimesheetNeedsAction(int start = 0, int limit = 0);
     }
 }

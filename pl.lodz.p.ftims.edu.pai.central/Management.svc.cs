@@ -133,7 +133,10 @@ namespace pl.lodz.p.ftims.edu.pai.central
 
         public List<Timesheet> GetProjectTimesheetsForPeriod(string id, string start, string end)
         {
-            throw new NotImplementedException();
+            int projectId = int.Parse(id);
+            DateTime startDate = DateTime.Parse(start);
+            DateTime endDate = DateTime.Parse(end);
+            return businessService.GetProjectTimesheets(projectId, startDate, endDate);
         }
 
         public Task GetTask(string id)

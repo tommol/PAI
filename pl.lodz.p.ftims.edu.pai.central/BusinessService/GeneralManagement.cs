@@ -258,5 +258,11 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
             var list = limit != 0 ? unitOfWork.BranchRepository.GetById(id).Employees.Skip(start).Take(limit) : unitOfWork.BranchRepository.GetById(id).Employees;
             return mapper.Map<IEnumerable<entity.Employee>, List<Employee>>(list);
         }
+
+        public List<Timesheet> GetTimesheetNeedsAction(int start = 0, int limit = 0)
+        {
+            var list = limit != 0 ? unitOfWork.TimesheetRepository.GetAll().Where(t => t.AuditData.Any(a => a.NewStatus == entity.TimesheetStatus.Submitted)).Skip(start).Take(limit): unitOfWork.TimesheetRepository.GetAll().Where(t => t.AuditData.Any(a => a.NewStatus == entity.TimesheetStatus.Submitted));
+            return mapper.Map<IEnumerable<entity.Timesheet>, List<Timesheet>>(list);
+        }
     }
 }
