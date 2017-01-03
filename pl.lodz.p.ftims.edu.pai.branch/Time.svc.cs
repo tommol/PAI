@@ -6,7 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using pl.lodz.p.ftims.edu.pai.branch.dto;
-using pl.lodz.p.ftims.edu.pai.branch.BusinessService;
+
 
 namespace pl.lodz.p.ftims.edu.pai.branch
 {

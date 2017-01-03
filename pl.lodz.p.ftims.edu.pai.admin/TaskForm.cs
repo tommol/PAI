@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace pl.lodz.p.ftims.edu.pai.admin
 {
-    public partial class Form1 : Form
+    public partial class TaskForm : Form
     {
-        public Form1()
+        public TaskForm()
         {
             InitializeComponent();
         }

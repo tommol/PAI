@@ -81,7 +81,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
         public void DeleteTask(int id)
         {
             var task = unitOfWork.TaskRepository.GetById(id);
-            if (task.Entries.Count > 0)
+            if (task.Entries != null && task.Entries.Count > 0)
             {
                 throw new Exception("Cannot Delete Entity");
             }
@@ -237,7 +237,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
         public void DeleteBranch(int id)
         {
             var branch = unitOfWork.BranchRepository.GetById(id);
-            if (branch.Employees.Count > 0)
+            if (branch.Employees!=null && branch.Employees.Count > 0)
             {
                 throw new Exception("Cannot Delete Entity");
             }

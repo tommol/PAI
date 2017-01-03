@@ -1,7 +1,6 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using pl.lodz.p.ftims.edu.pai.branch.BusinessService;
 using pl.lodz.p.ftims.edu.pai.branch.dal;
 using pl.lodz.p.lftims.edu.pai.branch.dal;
 

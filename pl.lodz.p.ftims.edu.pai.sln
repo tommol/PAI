@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.branch.dto", "pl.lodz.p.ftims.edu.pai.dto\pl.lodz.p.ftims.edu.pai.branch.dto.csproj", "{7C46B87A-F25E-448B-B56B-FE5717F8257A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.admin", "pl.lodz.p.ftims.edu.pai.admin\pl.lodz.p.ftims.edu.pai.admin.csproj", "{743A49DB-D392-4BE7-8252-5F27E10C9E54}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F1A06073-65A1-4C0B-846E-1CA0A912BD44} = {F1A06073-65A1-4C0B-846E-1CA0A912BD44}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.branch.dal", "pl.lodz.p.lftims.edu.pa.dal\pl.lodz.p.ftims.edu.pai.branch.dal.csproj", "{06BF802D-64BC-4E79-B454-553F1FD98485}"
 EndProject
