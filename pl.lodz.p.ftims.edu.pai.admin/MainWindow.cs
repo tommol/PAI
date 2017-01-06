@@ -1,12 +1,7 @@
 ﻿using pl.lodz.p.ftims.edu.pai.central.dto;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace pl.lodz.p.ftims.edu.pai.admin
@@ -102,9 +97,13 @@ namespace pl.lodz.p.ftims.edu.pai.admin
         private void btnAddProject_Click(object sender, EventArgs e)
         {
             ProjectForm form = new ProjectForm();
+            var listofEmployees = managementService.GetEmployees(0, 0).Select(x => new ManagerComboBoxItem(x.Name + " " + x.LastName + "(" + x.Id + ")", x.Id)).ToList();
+            form.comboManager.Items.AddRange(listofEmployees.ToArray());
             if (DialogResult.OK == form.ShowDialog(this))
             {
-                CreateProject createProject = new CreateProject(form.textCode.Text, form.textName.Text, 0, form.comboType.ValueMember == "W" ? 0 : 1);
+                var managerText = form.comboManager.Text;
+                var manager = listofEmployees.Where(t => t.ToString() == managerText).SingleOrDefault();
+                CreateProject createProject = new CreateProject(form.textCode.Text, form.textName.Text, manager == null ? 0 : (int)manager.Value, form.comboType.ValueMember == "W" ? 0 : 1);
                 var project = managementService.CreateProject(createProject);
                 UpdateGridProjects();
             }
@@ -148,6 +147,8 @@ namespace pl.lodz.p.ftims.edu.pai.admin
         private void btnProjectEdit_Click(object sender, EventArgs e)
         {
             ProjectForm form = new ProjectForm();
+            var listofEmployees = managementService.GetEmployees(0, 0).Select(x => new ManagerComboBoxItem(x.Name + " " + x.LastName + "(" + x.Id + ")", x.Id)).ToList();
+            form.comboManager.Items.AddRange(listofEmployees.ToArray());
             var selected = gridProject.SelectedRows[0];
             int projectId = int.Parse(selected.Cells[0].Value.ToString());
             var toEdit = managementService.GetProject(projectId.ToString());
@@ -155,6 +156,8 @@ namespace pl.lodz.p.ftims.edu.pai.admin
             form.textName.Text = toEdit.Name;
             form.textCode.Text = toEdit.Code;
             form.comboType.Text = toEdit.Type == 0 ? "W" : "B";
+            var projectManager = managementService.GetProjectManager(projectId.ToString());
+            form.comboManager.Text = projectManager == null ? "" : listofEmployees.Where(x => (int)x.Value == projectManager.Id).Single().ToString();
             if (DialogResult.OK == form.ShowDialog(this))
             {
                 Project updateProject = new Project(int.Parse(form.textId.Text), form.textCode.Text, form.textName.Text, form.comboType.Text == "W" ? 0 : 1);
@@ -247,6 +250,93 @@ namespace pl.lodz.p.ftims.edu.pai.admin
                 managementService.DeleteTask(id);
             }
             UpdateGridTasks();
+        }
+        #endregion
+        #region Employee
+        private void btnAddEmployee_Click(object sender, EventArgs e)
+        {
+            EmployeeForm form = new EmployeeForm();
+            var listofEmployees = managementService.GetEmployees(0, 0).Select(x => new ManagerComboBoxItem(x.Name + " " + x.LastName + "(" + x.Id + ")", x.Id)).ToList();
+            form.comboManager.Items.AddRange(listofEmployees.ToArray());
+            if (DialogResult.OK == form.ShowDialog(this))
+            {
+                var managerText = form.comboManager.Text;
+                var manager = listofEmployees.Where(t => t.ToString() == managerText).SingleOrDefault();
+                CreateEmployee createEmployee = new CreateEmployee(form.textName.Text, form.textLastname.Text, form.textEmail.Text, manager == null ? 0 : (int)manager.Value);
+                var project = managementService.CreateEmployee(createEmployee);
+                UpdateGridEmployees();
+            }
+        }
+
+        private void tabEmployee_Enter(object sender, EventArgs e)
+        {
+            UpdateGridEmployees();
+        }
+
+        private void UpdateGridEmployees()
+        {
+            gridEmployee.Rows.Clear();
+            central.dto.Employee[] employees = managementService.GetEmployees(0, 0);
+            foreach (var employee in employees)
+            {
+                gridEmployee.Rows.Add(employee.Id, employee.Name, employee.LastName, employee.Email);
+            }
+        }
+
+        private void gridEmployee_SelectionChanged(object sender, EventArgs e)
+        {
+            var selected = gridEmployee.SelectedRows;
+            if (selected.Count == 0)
+            {
+                btnEmployeeDelete.Enabled = false;
+                btnEmployeeEdit.Enabled = false;
+            }
+            else if (selected.Count == 1)
+            {
+                btnEmployeeDelete.Enabled = true;
+                btnEmployeeEdit.Enabled = true;
+            }
+            else
+            {
+                btnEmployeeDelete.Enabled = true;
+                btnEmployeeEdit.Enabled = false;
+            }
+        }
+
+        private void btnEmployeeEdit_Click(object sender, EventArgs e)
+        {
+            EmployeeForm form = new EmployeeForm();
+            var listofEmployees = managementService.GetEmployees(0, 0).Select(x => new ManagerComboBoxItem(x.Name + " " + x.LastName + "(" + x.Id + ")", x.Id)).ToList();
+            form.comboManager.Items.AddRange(listofEmployees.ToArray());
+            var selected = gridEmployee.SelectedRows[0];
+            int employeeId = int.Parse(selected.Cells[0].Value.ToString());
+            var toEdit = managementService.GetEmployee(employeeId.ToString());
+            form.textId.Text = toEdit.Id.ToString();
+            form.textLastname.Text = toEdit.LastName;
+            form.textName.Text = toEdit.Name;
+            form.textEmail.Text = toEdit.Email;            
+            form.checkUserAccount.Visible = false;
+            var manager =managementService.GetEmployeeManager(employeeId.ToString());
+            form.comboManager.Text = manager == null ? "" : listofEmployees.Where(x => (int)x.Value == manager.Id).Single().ToString();
+            form.comboManager.Enabled = false;
+            if (DialogResult.OK == form.ShowDialog(this))
+            {
+
+                central.dto.Employee updateEmployee = new Employee(int.Parse(form.textId.Text), form.textName.Text, form.textLastname.Text, form.textEmail.Text);
+                var employee = managementService.UpdateEmployee(form.textId.Text, updateEmployee);
+                UpdateGridEmployees();
+            }
+        }
+
+        private void btnEmployeeDelete_Click(object sender, EventArgs e)
+        {
+            for (var i = 0; i < gridEmployee.SelectedRows.Count; i++)
+            {
+                var selection = gridEmployee.SelectedRows[i];
+                var id = selection.Cells[0].Value.ToString();
+                managementService.DeleteEmployee(id);
+            }
+            UpdateGridEmployees();
         }
         #endregion
     }

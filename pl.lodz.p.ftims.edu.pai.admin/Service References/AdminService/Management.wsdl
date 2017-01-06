@@ -121,6 +121,12 @@
   <wsdl:message name="IManagement_GetEmployeeSubordinates_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetEmployeeSubordinatesResponse" />
   </wsdl:message>
+  <wsdl:message name="IManagement_GetEmployeeManager_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeManager" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetEmployeeManager_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeManagerResponse" />
+  </wsdl:message>
   <wsdl:message name="IManagement_GetEmployeeTimesheetsForPeriod_InputMessage">
     <wsdl:part name="parameters" element="tns:GetEmployeeTimesheetsForPeriod" />
   </wsdl:message>
@@ -287,6 +293,10 @@
     <wsdl:operation name="GetEmployeeSubordinates">
       <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetEmployeeSubordinates" message="tns:IManagement_GetEmployeeSubordinates_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetEmployeeSubordinatesResponse" message="tns:IManagement_GetEmployeeSubordinates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeManager">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetEmployeeManager" message="tns:IManagement_GetEmployeeManager_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetEmployeeManagerResponse" message="tns:IManagement_GetEmployeeManager_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetEmployeeTimesheetsForPeriod">
       <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetEmployeeTimesheetsForPeriod" message="tns:IManagement_GetEmployeeTimesheetsForPeriod_InputMessage" />
@@ -515,6 +525,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetEmployeeSubordinates">
       <soap:operation soapAction="http://tempuri.org/IManagement/GetEmployeeSubordinates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeManager">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetEmployeeManager" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

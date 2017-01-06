@@ -211,5 +211,10 @@ namespace pl.lodz.p.ftims.edu.pai.central
             int taskId = int.Parse(id);
             return businessService.UpdateTask(taskId, project);
         }
+
+        public Employee GetEmployeeManager(string id)
+        {
+            return businessService.GetEmployeeManager(int.Parse(id));
+        }
     }
 }

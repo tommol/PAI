@@ -30,6 +30,15 @@
         {
             this.tabEmployees = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.gridEmployee = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnEmployeeDelete = new System.Windows.Forms.Button();
+            this.btnEmployeeEdit = new System.Windows.Forms.Button();
+            this.btnEmployeeAdd = new System.Windows.Forms.Button();
             this.tabProjects = new System.Windows.Forms.TabPage();
             this.gridProject = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,8 +72,12 @@
             this.btnBranchDelete = new System.Windows.Forms.Button();
             this.btnBranchEdit = new System.Windows.Forms.Button();
             this.btnAddBranch = new System.Windows.Forms.Button();
+            this.tabUsers = new System.Windows.Forms.TabPage();
             this.dataSet1 = new System.Data.DataSet();
             this.tabEmployees.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridEmployee)).BeginInit();
+            this.panel4.SuspendLayout();
             this.tabProjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridProject)).BeginInit();
             this.panel2.SuspendLayout();
@@ -83,16 +96,19 @@
             this.tabEmployees.Controls.Add(this.tabProjects);
             this.tabEmployees.Controls.Add(this.tabTasks);
             this.tabEmployees.Controls.Add(this.tabBranches);
+            this.tabEmployees.Controls.Add(this.tabUsers);
             this.tabEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabEmployees.Location = new System.Drawing.Point(0, 0);
             this.tabEmployees.Name = "tabEmployees";
             this.tabEmployees.SelectedIndex = 0;
             this.tabEmployees.Size = new System.Drawing.Size(710, 398);
             this.tabEmployees.TabIndex = 0;
-            this.tabEmployees.Enter += new System.EventHandler(this.tabProject_Enter);
+            this.tabEmployees.Enter += new System.EventHandler(this.tabEmployee_Enter);
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.gridEmployee);
+            this.tabPage1.Controls.Add(this.panel4);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -100,6 +116,90 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Pracownicy";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // gridEmployee
+            // 
+            this.gridEmployee.AllowUserToAddRows = false;
+            this.gridEmployee.AllowUserToDeleteRows = false;
+            this.gridEmployee.AllowUserToResizeRows = false;
+            this.gridEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridEmployee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.Column1});
+            this.gridEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridEmployee.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.gridEmployee.Location = new System.Drawing.Point(3, 34);
+            this.gridEmployee.Name = "gridEmployee";
+            this.gridEmployee.RowHeadersVisible = false;
+            this.gridEmployee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridEmployee.Size = new System.Drawing.Size(696, 335);
+            this.gridEmployee.TabIndex = 3;
+            this.gridEmployee.SelectionChanged += new System.EventHandler(this.gridEmployee_SelectionChanged);
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "#";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Imię";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "Nazwisko";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "E-mail";
+            this.Column1.Name = "Column1";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btnEmployeeDelete);
+            this.panel4.Controls.Add(this.btnEmployeeEdit);
+            this.panel4.Controls.Add(this.btnEmployeeAdd);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(696, 31);
+            this.panel4.TabIndex = 2;
+            // 
+            // btnEmployeeDelete
+            // 
+            this.btnEmployeeDelete.Enabled = false;
+            this.btnEmployeeDelete.Location = new System.Drawing.Point(167, 3);
+            this.btnEmployeeDelete.Name = "btnEmployeeDelete";
+            this.btnEmployeeDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnEmployeeDelete.TabIndex = 2;
+            this.btnEmployeeDelete.Text = "Usuń";
+            this.btnEmployeeDelete.UseVisualStyleBackColor = true;
+            this.btnEmployeeDelete.Click += new System.EventHandler(this.btnEmployeeDelete_Click);
+            // 
+            // btnEmployeeEdit
+            // 
+            this.btnEmployeeEdit.Enabled = false;
+            this.btnEmployeeEdit.Location = new System.Drawing.Point(86, 3);
+            this.btnEmployeeEdit.Name = "btnEmployeeEdit";
+            this.btnEmployeeEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEmployeeEdit.TabIndex = 1;
+            this.btnEmployeeEdit.Text = "Edytuj";
+            this.btnEmployeeEdit.UseVisualStyleBackColor = true;
+            this.btnEmployeeEdit.Click += new System.EventHandler(this.btnEmployeeEdit_Click);
+            // 
+            // btnEmployeeAdd
+            // 
+            this.btnEmployeeAdd.Location = new System.Drawing.Point(5, 3);
+            this.btnEmployeeAdd.Name = "btnEmployeeAdd";
+            this.btnEmployeeAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnEmployeeAdd.TabIndex = 0;
+            this.btnEmployeeAdd.Text = "Dodaj";
+            this.btnEmployeeAdd.UseVisualStyleBackColor = true;
+            this.btnEmployeeAdd.Click += new System.EventHandler(this.btnAddEmployee_Click);
             // 
             // tabProjects
             // 
@@ -112,6 +212,7 @@
             this.tabProjects.TabIndex = 1;
             this.tabProjects.Text = "Projekty";
             this.tabProjects.UseVisualStyleBackColor = true;
+            this.tabProjects.Enter += new System.EventHandler(this.tabProject_Enter);
             // 
             // gridProject
             // 
@@ -426,6 +527,16 @@
             this.btnAddBranch.UseVisualStyleBackColor = true;
             this.btnAddBranch.Click += new System.EventHandler(this.btnAddBranch_Click);
             // 
+            // tabUsers
+            // 
+            this.tabUsers.Location = new System.Drawing.Point(4, 22);
+            this.tabUsers.Name = "tabUsers";
+            this.tabUsers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabUsers.Size = new System.Drawing.Size(702, 372);
+            this.tabUsers.TabIndex = 4;
+            this.tabUsers.Text = "Użytkownicy";
+            this.tabUsers.UseVisualStyleBackColor = true;
+            // 
             // dataSet1
             // 
             this.dataSet1.DataSetName = "NewDataSet";
@@ -439,6 +550,9 @@
             this.Name = "MainWindow";
             this.Text = "Timesheet Admin";
             this.tabEmployees.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridEmployee)).EndInit();
+            this.panel4.ResumeLayout(false);
             this.tabProjects.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridProject)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -493,6 +607,16 @@
         private System.Windows.Forms.Button btnTaskDelete;
         private System.Windows.Forms.Button btnTaskEdit;
         private System.Windows.Forms.Button btnTaskAdd;
+        private System.Windows.Forms.DataGridView gridEmployee;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnEmployeeDelete;
+        private System.Windows.Forms.Button btnEmployeeEdit;
+        private System.Windows.Forms.Button btnEmployeeAdd;
+        private System.Windows.Forms.TabPage tabUsers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }
 

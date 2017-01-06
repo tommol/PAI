@@ -24,6 +24,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
         List<dto.Task> FindTasks(string query, int start = 0, int limit = 0);
         Employee CreateEmployee(CreateEmployee employee);
         Employee GetEmployee(int id);
+        Employee GetEmployeeManager(int id);
         List<Employee> GetEmployees(int start = 0, int limit = 0);
         void DeleteEmployee(int id);
         Employee UpdateEmployee(int id, Employee task);

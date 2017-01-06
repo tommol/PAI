@@ -111,6 +111,11 @@ namespace pl.lodz.p.ftims.edu.pai.central
         List<Employee> GetEmployeeSubordinates(string id, int start = 0, int limit = 0);
 
         [OperationContract]
+        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/employee/{id}/manager")]
+        [Description("Gets manager of employee")]
+        Employee GetEmployeeManager(string id);
+
+        [OperationContract]
         [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/employee/{id}/timesheet?start={start}&end={end}")]
         [Description("Gets timesheet of specified employee within date range")]
         List<Timesheet> GetEmployeeTimesheetsForPeriod(string id, string start, string end);
@@ -128,7 +133,7 @@ namespace pl.lodz.p.ftims.edu.pai.central
         [OperationContract]
         [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "PUT", UriTemplate = "/employee/{id}")]
         [Description("Updates an employee")]
-        Employee UpdateEmployee(string id, Employee project);
+        Employee UpdateEmployee(string id, Employee employee);
 
         [OperationContract]
         [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "POST", UriTemplate = "/employee/{employeeId}/subordinate/{subordinateId}")]

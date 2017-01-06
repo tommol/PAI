@@ -1,6 +1,6 @@
 ﻿namespace pl.lodz.p.ftims.edu.pai.admin
 {
-    partial class ProjectForm
+    partial class EmployeeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -35,13 +35,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textCode = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.textName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textLastname = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboType = new System.Windows.Forms.ComboBox();
+            this.textEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.comboManager = new System.Windows.Forms.ComboBox();
+            this.checkUserAccount = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +52,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnSave);
             this.flowLayoutPanel1.Controls.Add(this.btnCancel);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 280);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 319);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(284, 30);
@@ -83,18 +84,19 @@
             this.flowLayoutPanel2.Controls.Add(this.label1);
             this.flowLayoutPanel2.Controls.Add(this.textId);
             this.flowLayoutPanel2.Controls.Add(this.label2);
-            this.flowLayoutPanel2.Controls.Add(this.textCode);
-            this.flowLayoutPanel2.Controls.Add(this.label3);
             this.flowLayoutPanel2.Controls.Add(this.textName);
+            this.flowLayoutPanel2.Controls.Add(this.label3);
+            this.flowLayoutPanel2.Controls.Add(this.textLastname);
             this.flowLayoutPanel2.Controls.Add(this.label4);
-            this.flowLayoutPanel2.Controls.Add(this.comboType);
+            this.flowLayoutPanel2.Controls.Add(this.textEmail);
             this.flowLayoutPanel2.Controls.Add(this.label5);
             this.flowLayoutPanel2.Controls.Add(this.comboManager);
+            this.flowLayoutPanel2.Controls.Add(this.checkUserAccount);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(10);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(284, 280);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(284, 319);
             this.flowLayoutPanel2.TabIndex = 1;
             // 
             // label1
@@ -111,8 +113,8 @@
             // textId
             // 
             this.flowLayoutPanel2.SetFlowBreak(this.textId, true);
-            this.textId.Location = new System.Drawing.Point(6, 25);
-            this.textId.Margin = new System.Windows.Forms.Padding(6, 0, 6, 3);
+            this.textId.Location = new System.Drawing.Point(6, 26);
+            this.textId.Margin = new System.Windows.Forms.Padding(6, 0, 6, 6);
             this.textId.Name = "textId";
             this.textId.ReadOnly = true;
             this.textId.Size = new System.Drawing.Size(185, 20);
@@ -122,100 +124,108 @@
             // 
             this.label2.AutoSize = true;
             this.flowLayoutPanel2.SetFlowBreak(this.label2, true);
-            this.label2.Location = new System.Drawing.Point(6, 51);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
+            this.label2.Location = new System.Drawing.Point(6, 58);
+            this.label2.Margin = new System.Windows.Forms.Padding(6);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Kod";
+            this.label2.Text = "Imię";
             // 
-            // textCode
+            // textName
             // 
-            this.flowLayoutPanel2.SetFlowBreak(this.textCode, true);
-            this.textCode.Location = new System.Drawing.Point(6, 71);
-            this.textCode.Margin = new System.Windows.Forms.Padding(6, 0, 6, 3);
-            this.textCode.Name = "textCode";
-            this.textCode.Size = new System.Drawing.Size(185, 20);
-            this.textCode.TabIndex = 3;
+            this.flowLayoutPanel2.SetFlowBreak(this.textName, true);
+            this.textName.Location = new System.Drawing.Point(6, 78);
+            this.textName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 6);
+            this.textName.Name = "textName";
+            this.textName.Size = new System.Drawing.Size(185, 20);
+            this.textName.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.flowLayoutPanel2.SetFlowBreak(this.label3, true);
-            this.label3.Location = new System.Drawing.Point(6, 97);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 3, 6, 6);
+            this.label3.Location = new System.Drawing.Point(6, 110);
+            this.label3.Margin = new System.Windows.Forms.Padding(6);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Nazwa";
+            this.label3.Text = "Nazwisko";
             // 
-            // textName
+            // textLastname
             // 
-            this.flowLayoutPanel2.SetFlowBreak(this.textName, true);
-            this.textName.Location = new System.Drawing.Point(6, 117);
-            this.textName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 3);
-            this.textName.Name = "textName";
-            this.textName.Size = new System.Drawing.Size(185, 20);
-            this.textName.TabIndex = 5;
+            this.flowLayoutPanel2.SetFlowBreak(this.textLastname, true);
+            this.textLastname.Location = new System.Drawing.Point(6, 130);
+            this.textLastname.Margin = new System.Windows.Forms.Padding(6, 0, 6, 6);
+            this.textLastname.Name = "textLastname";
+            this.textLastname.Size = new System.Drawing.Size(185, 20);
+            this.textLastname.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.flowLayoutPanel2.SetFlowBreak(this.label4, true);
-            this.label4.Location = new System.Drawing.Point(6, 143);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 3, 6, 6);
+            this.label4.Location = new System.Drawing.Point(6, 162);
+            this.label4.Margin = new System.Windows.Forms.Padding(6);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(25, 13);
+            this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Typ";
+            this.label4.Text = "E-mail";
             // 
-            // comboType
+            // textEmail
             // 
-            this.flowLayoutPanel2.SetFlowBreak(this.comboType, true);
-            this.comboType.FormattingEnabled = true;
-            this.comboType.Items.AddRange(new object[] {
-            "W",
-            "B"});
-            this.comboType.Location = new System.Drawing.Point(6, 164);
-            this.comboType.Margin = new System.Windows.Forms.Padding(6, 0, 6, 3);
-            this.comboType.Name = "comboType";
-            this.comboType.Size = new System.Drawing.Size(185, 21);
-            this.comboType.TabIndex = 7;
+            this.flowLayoutPanel2.SetFlowBreak(this.textEmail, true);
+            this.textEmail.Location = new System.Drawing.Point(6, 182);
+            this.textEmail.Margin = new System.Windows.Forms.Padding(6, 0, 6, 6);
+            this.textEmail.Name = "textEmail";
+            this.textEmail.Size = new System.Drawing.Size(185, 20);
+            this.textEmail.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.flowLayoutPanel2.SetFlowBreak(this.label5, true);
-            this.label5.Location = new System.Drawing.Point(6, 191);
+            this.label5.Location = new System.Drawing.Point(6, 211);
             this.label5.Margin = new System.Windows.Forms.Padding(6, 3, 6, 6);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 13);
-            this.label5.TabIndex = 8;
+            this.label5.TabIndex = 10;
             this.label5.Text = "Manager";
             // 
             // comboManager
             // 
+            this.flowLayoutPanel2.SetFlowBreak(this.comboManager, true);
             this.comboManager.FormattingEnabled = true;
-            this.comboManager.Location = new System.Drawing.Point(6, 212);
+            this.comboManager.Location = new System.Drawing.Point(6, 232);
             this.comboManager.Margin = new System.Windows.Forms.Padding(6, 0, 6, 3);
             this.comboManager.Name = "comboManager";
             this.comboManager.Size = new System.Drawing.Size(185, 21);
-            this.comboManager.TabIndex = 9;
+            this.comboManager.TabIndex = 11;
             // 
-            // ProjectForm
+            // checkUserAccount
+            // 
+            this.checkUserAccount.AutoSize = true;
+            this.checkUserAccount.Location = new System.Drawing.Point(6, 262);
+            this.checkUserAccount.Margin = new System.Windows.Forms.Padding(6);
+            this.checkUserAccount.Name = "checkUserAccount";
+            this.checkUserAccount.Size = new System.Drawing.Size(121, 17);
+            this.checkUserAccount.TabIndex = 12;
+            this.checkUserAccount.Text = "Utwórz użytkownika";
+            this.checkUserAccount.UseVisualStyleBackColor = true;
+            // 
+            // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 310);
+            this.ClientSize = new System.Drawing.Size(284, 349);
             this.ControlBox = false;
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "ProjectForm";
+            this.Name = "EmployeeForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Projekt";
+            this.Text = "Pracownik";
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
@@ -233,11 +243,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.TextBox textId;
-        public System.Windows.Forms.TextBox textCode;
         public System.Windows.Forms.TextBox textName;
+        public System.Windows.Forms.TextBox textLastname;
         private System.Windows.Forms.Label label4;
-        public System.Windows.Forms.ComboBox comboType;
+        public System.Windows.Forms.TextBox textEmail;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.ComboBox comboManager;
+        public System.Windows.Forms.CheckBox checkUserAccount;
     }
 }

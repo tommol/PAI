@@ -50,7 +50,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
         public void DeleteEmployee(int id)
         {
             var employee = unitOfWork.EmployeeRepository.GetById(id);
-            if (employee.Subordinates.Count > 0)
+            if (employee.Subordinates != null && employee.Subordinates.Count > 0)
             {
                 throw new CannotDeleteEmployeeException("Cannot delete employee with assigned subordinates. Please Rrmove relation than retry");
             }
@@ -113,7 +113,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
             return mapper.Map<IEnumerable<entity.Employee>, List<Employee>>(list);
         }
 
-        public List<Employee> GetEmployeeSubordinates(int id, int start = 0, int limit = 0 )
+        public List<Employee> GetEmployeeSubordinates(int id, int start = 0, int limit = 0)
         {
             var list = limit != 0 ? unitOfWork.EmployeeRepository.GetById(id).Subordinates.Skip(start).Take(limit) : unitOfWork.EmployeeRepository.GetById(id).Subordinates;
             return mapper.Map<IEnumerable<entity.Employee>, List<Employee>>(list);
@@ -121,7 +121,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
 
         public List<Timesheet> GetEmployeeTimesheets(int employeeId, DateTime start, DateTime end)
         {
-            var list = unitOfWork.TimesheetRepository.Find(x => x.Applicant.Id == employeeId && (x.StartDay>= start && x.EndDay <= end));
+            var list = unitOfWork.TimesheetRepository.Find(x => x.Applicant.Id == employeeId && (x.StartDay >= start && x.EndDay <= end));
             return mapper.Map<IEnumerable<entity.Timesheet>, List<Timesheet>>(list);
         }
 
@@ -237,7 +237,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
         public void DeleteBranch(int id)
         {
             var branch = unitOfWork.BranchRepository.GetById(id);
-            if (branch.Employees!=null && branch.Employees.Count > 0)
+            if (branch.Employees != null && branch.Employees.Count > 0)
             {
                 throw new Exception("Cannot Delete Entity");
             }
@@ -261,8 +261,14 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
 
         public List<Timesheet> GetTimesheetNeedsAction(int start = 0, int limit = 0)
         {
-            var list = limit != 0 ? unitOfWork.TimesheetRepository.GetAll().Where(t => t.AuditData.Any(a => a.NewStatus == entity.TimesheetStatus.Submitted)).Skip(start).Take(limit): unitOfWork.TimesheetRepository.GetAll().Where(t => t.AuditData.Any(a => a.NewStatus == entity.TimesheetStatus.Submitted));
+            var list = limit != 0 ? unitOfWork.TimesheetRepository.GetAll().Where(t => t.AuditData.Any(a => a.NewStatus == entity.TimesheetStatus.Submitted)).Skip(start).Take(limit) : unitOfWork.TimesheetRepository.GetAll().Where(t => t.AuditData.Any(a => a.NewStatus == entity.TimesheetStatus.Submitted));
             return mapper.Map<IEnumerable<entity.Timesheet>, List<Timesheet>>(list);
+        }
+
+        public Employee GetEmployeeManager(int id)
+        {
+            var manager = unitOfWork.EmployeeRepository.GetById(id).Manager;
+            return mapper.Map<Employee>(manager);
         }
     }
 }

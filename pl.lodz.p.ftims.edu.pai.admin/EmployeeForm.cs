@@ -10,14 +10,11 @@ using System.Windows.Forms;
 
 namespace pl.lodz.p.ftims.edu.pai.admin
 {
-    public partial class ProjectForm : Form
+    public partial class EmployeeForm : Form
     {
-        public List<ManagerComboBoxItem> Managers { get; set; }
-
-        public ProjectForm()
+        public EmployeeForm()
         {
             InitializeComponent();
         }
-
     }
 }

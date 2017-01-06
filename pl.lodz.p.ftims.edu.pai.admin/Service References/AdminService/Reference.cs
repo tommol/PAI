@@ -129,6 +129,12 @@ namespace pl.lodz.p.ftims.edu.pai.admin.AdminService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/GetEmployeeSubordinates", ReplyAction="http://tempuri.org/IManagement/GetEmployeeSubordinatesResponse")]
         System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.central.dto.Employee[]> GetEmployeeSubordinatesAsync(string id, int start, int limit);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/GetEmployeeManager", ReplyAction="http://tempuri.org/IManagement/GetEmployeeManagerResponse")]
+        pl.lodz.p.ftims.edu.pai.central.dto.Employee GetEmployeeManager(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/GetEmployeeManager", ReplyAction="http://tempuri.org/IManagement/GetEmployeeManagerResponse")]
+        System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.central.dto.Employee> GetEmployeeManagerAsync(string id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/GetEmployeeTimesheetsForPeriod", ReplyAction="http://tempuri.org/IManagement/GetEmployeeTimesheetsForPeriodResponse")]
         pl.lodz.p.ftims.edu.pai.central.dto.Timesheet[] GetEmployeeTimesheetsForPeriod(string id, string start, string end);
         
@@ -148,10 +154,10 @@ namespace pl.lodz.p.ftims.edu.pai.admin.AdminService {
         System.Threading.Tasks.Task DeleteEmployeeAsync(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/UpdateEmployee", ReplyAction="http://tempuri.org/IManagement/UpdateEmployeeResponse")]
-        pl.lodz.p.ftims.edu.pai.central.dto.Employee UpdateEmployee(string id, pl.lodz.p.ftims.edu.pai.central.dto.Employee project);
+        pl.lodz.p.ftims.edu.pai.central.dto.Employee UpdateEmployee(string id, pl.lodz.p.ftims.edu.pai.central.dto.Employee employee);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/UpdateEmployee", ReplyAction="http://tempuri.org/IManagement/UpdateEmployeeResponse")]
-        System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.central.dto.Employee> UpdateEmployeeAsync(string id, pl.lodz.p.ftims.edu.pai.central.dto.Employee project);
+        System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.central.dto.Employee> UpdateEmployeeAsync(string id, pl.lodz.p.ftims.edu.pai.central.dto.Employee employee);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/AddSubordinate", ReplyAction="http://tempuri.org/IManagement/AddSubordinateResponse")]
         pl.lodz.p.ftims.edu.pai.central.dto.Employee[] AddSubordinate(string employeeId, string subordinateId);
@@ -399,6 +405,14 @@ namespace pl.lodz.p.ftims.edu.pai.admin.AdminService {
             return base.Channel.GetEmployeeSubordinatesAsync(id, start, limit);
         }
         
+        public pl.lodz.p.ftims.edu.pai.central.dto.Employee GetEmployeeManager(string id) {
+            return base.Channel.GetEmployeeManager(id);
+        }
+        
+        public System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.central.dto.Employee> GetEmployeeManagerAsync(string id) {
+            return base.Channel.GetEmployeeManagerAsync(id);
+        }
+        
         public pl.lodz.p.ftims.edu.pai.central.dto.Timesheet[] GetEmployeeTimesheetsForPeriod(string id, string start, string end) {
             return base.Channel.GetEmployeeTimesheetsForPeriod(id, start, end);
         }
@@ -423,12 +437,12 @@ namespace pl.lodz.p.ftims.edu.pai.admin.AdminService {
             return base.Channel.DeleteEmployeeAsync(id);
         }
         
-        public pl.lodz.p.ftims.edu.pai.central.dto.Employee UpdateEmployee(string id, pl.lodz.p.ftims.edu.pai.central.dto.Employee project) {
-            return base.Channel.UpdateEmployee(id, project);
+        public pl.lodz.p.ftims.edu.pai.central.dto.Employee UpdateEmployee(string id, pl.lodz.p.ftims.edu.pai.central.dto.Employee employee) {
+            return base.Channel.UpdateEmployee(id, employee);
         }
         
-        public System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.central.dto.Employee> UpdateEmployeeAsync(string id, pl.lodz.p.ftims.edu.pai.central.dto.Employee project) {
-            return base.Channel.UpdateEmployeeAsync(id, project);
+        public System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.central.dto.Employee> UpdateEmployeeAsync(string id, pl.lodz.p.ftims.edu.pai.central.dto.Employee employee) {
+            return base.Channel.UpdateEmployeeAsync(id, employee);
         }
         
         public pl.lodz.p.ftims.edu.pai.central.dto.Employee[] AddSubordinate(string employeeId, string subordinateId) {
