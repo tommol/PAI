@@ -44,10 +44,13 @@
   <ItemGroup>
     <Compile Include="Audit.cs" />
     <Compile Include="Branch.cs" />
+    <Compile Include="CreateAudit.cs" />
     <Compile Include="CreateBranch.cs" />
     <Compile Include="CreateEmployee.cs" />
+    <Compile Include="CreateEntry.cs" />
     <Compile Include="CreateProject.cs" />
     <Compile Include="CreateTask.cs" />
+    <Compile Include="CreateTimesheet.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Entry.cs" />
     <Compile Include="Project.cs" />

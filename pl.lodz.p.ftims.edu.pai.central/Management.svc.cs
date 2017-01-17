@@ -216,5 +216,25 @@ namespace pl.lodz.p.ftims.edu.pai.central
         {
             return businessService.GetEmployeeManager(int.Parse(id));
         }
+
+        public List<Timesheet> GetTimesheetsNeedAction(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Timesheet CreateTimesheet(CreateTimesheet createTimesheet)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Timesheet AcceptTimesheet(string id, CreateAudit createAudit)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Timesheet RejectTimesheet(string id, CreateAudit createAudit)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -162,6 +162,22 @@ namespace pl.lodz.p.ftims.edu.pai.central
         [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/timesheet/{id}/history?start={start}&limit={limit}")]
         [Description("Gets history of timesheet")]
         List<Audit> GetTimesheetHistory(string id, int start = 0, int limit = 0);
+        [OperationContract]
+        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/timesheet/employee/{id}")]
+        [Description("Gets list of timesheets which needs action made by employee")]
+        List<Timesheet> GetTimesheetsNeedAction(string id);
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "POST", UriTemplate = "/timesheet")]
+        [Description("Adds a timesheet")]
+        Timesheet CreateTimesheet(CreateTimesheet createTimesheet);
+        [OperationContract]
+        [Description("Accept timesheet")]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "POST", UriTemplate = "/timesheet/{id}/action?type=acceptance")]
+        Timesheet AcceptTimesheet(string id, CreateAudit createAudit);
+        [OperationContract]
+        [Description("Reject timesheet")]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "POST", UriTemplate = "/timesheet/{id}/action?type=rejection")]
+        Timesheet RejectTimesheet(string id, CreateAudit createAudit);
 
 
         #endregion TimesheetMethods
