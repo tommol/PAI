@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2b0c70cf-a815-4abf-9468-948e3beb4ae2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:51548/Management.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Management.xsd" MetadataType="Schema" ID="e4066132-bdb5-4d0b-84cd-055285aa64c7" SourceId="1" SourceUrl="http://localhost:51548/Management.svc?xsd=xsd2" />
+    <MetadataFile FileName="Management.wsdl" MetadataType="Wsdl" ID="d8fe6aad-0d3d-4fe8-81ba-0f278f150622" SourceId="1" SourceUrl="http://localhost:51548/Management.svc?wsdl" />
+    <MetadataFile FileName="Management.disco" MetadataType="Disco" ID="5c87e875-4c63-4810-bbdd-9ec5bf04c465" SourceId="1" SourceUrl="http://localhost:51548/Management.svc?disco" />
+    <MetadataFile FileName="Management1.xsd" MetadataType="Schema" ID="b4bff87c-e6fd-4c95-b60a-aee6bef4a8f8" SourceId="1" SourceUrl="http://localhost:51548/Management.svc?xsd=xsd0" />
+    <MetadataFile FileName="Management2.xsd" MetadataType="Schema" ID="391a3c98-2a65-49cd-b799-e7384b20b17f" SourceId="1" SourceUrl="http://localhost:51548/Management.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -29,6 +29,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pl.lodz.p.ftims.edu.pai.web", "pl.lodz.p.ftims.edu.pai.web\pl.lodz.p.ftims.edu.pai.web.csproj", "{C06F3D13-86DF-4F6D-9A67-A0EBF328646E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F1A06073-65A1-4C0B-846E-1CA0A912BD44} = {F1A06073-65A1-4C0B-846E-1CA0A912BD44}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +76,10 @@ Global
 		{E2E36DA5-0EB6-429A-BD4F-FE35F8B19025}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2E36DA5-0EB6-429A-BD4F-FE35F8B19025}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2E36DA5-0EB6-429A-BD4F-FE35F8B19025}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C06F3D13-86DF-4F6D-9A67-A0EBF328646E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C06F3D13-86DF-4F6D-9A67-A0EBF328646E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C06F3D13-86DF-4F6D-9A67-A0EBF328646E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C06F3D13-86DF-4F6D-9A67-A0EBF328646E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

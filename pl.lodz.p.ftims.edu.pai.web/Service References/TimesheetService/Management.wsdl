@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Management" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:51548/Management.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:51548/Management.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:51548/Management.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IManagement_GetProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProject" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetProjects_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjects" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetProjects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetManagedProjects_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetManagedProjects" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetManagedProjects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetManagedProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetProjectTimesheetsForPeriod_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectTimesheetsForPeriod" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetProjectTimesheetsForPeriod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectTimesheetsForPeriodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_QueryForProjects_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryForProjects" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_QueryForProjects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryForProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_CreateProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateProject" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_CreateProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_DeleteProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProject" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_DeleteProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_UpdateProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProject" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_UpdateProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_SetProjectManager_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetProjectManager" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_SetProjectManager_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetProjectManagerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetProjectManager_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectManager" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetProjectManager_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectManagerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTask" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetTasks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTasks" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetTasks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTasksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_QueryForTaks_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryForTaks" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_QueryForTaks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryForTaksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_CreateTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTask" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_CreateTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_DeleteTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTask" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_DeleteTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_UpdateTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTask" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_UpdateTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetEmployees_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployees" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetEmployees_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetEmployeeSubordinates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeSubordinates" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetEmployeeSubordinates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeSubordinatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetEmployeeManager_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeManager" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetEmployeeManager_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeManagerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetEmployeeTimesheetsForPeriod_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeTimesheetsForPeriod" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetEmployeeTimesheetsForPeriod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeTimesheetsForPeriodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_CreateEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_CreateEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_DeleteEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_DeleteEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_UpdateEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_UpdateEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_AddSubordinate_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddSubordinate" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_AddSubordinate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddSubordinateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_DeleteSubordinate_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSubordinate" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_DeleteSubordinate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSubordinateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetTimesheet_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimesheet" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetTimesheet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimesheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetTimesheets_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimesheets" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetTimesheets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimesheetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetTimesheetsNeedAction_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimesheetsNeedAction" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetTimesheetsNeedAction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimesheetsNeedActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetTimesheetHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimesheetHistory" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetTimesheetHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimesheetHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetBranch_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBranch" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetBranch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBranchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetBranchess_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBranchess" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_GetBranchess_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBranchessResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_CreateBranch_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBranch" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_CreateBranch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateBranchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_DeleteBranch_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBranch" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_DeleteBranch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBranchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_UpdateBranch_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBranch" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_UpdateBranch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBranchResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IManagement">
+    <wsdl:operation name="GetProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetProject" message="tns:IManagement_GetProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetProjectResponse" message="tns:IManagement_GetProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetProjects" message="tns:IManagement_GetProjects_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetProjectsResponse" message="tns:IManagement_GetProjects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetManagedProjects">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetManagedProjects" message="tns:IManagement_GetManagedProjects_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetManagedProjectsResponse" message="tns:IManagement_GetManagedProjects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectTimesheetsForPeriod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetProjectTimesheetsForPeriod" message="tns:IManagement_GetProjectTimesheetsForPeriod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetProjectTimesheetsForPeriodResponse" message="tns:IManagement_GetProjectTimesheetsForPeriod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryForProjects">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/QueryForProjects" message="tns:IManagement_QueryForProjects_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/QueryForProjectsResponse" message="tns:IManagement_QueryForProjects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/CreateProject" message="tns:IManagement_CreateProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/CreateProjectResponse" message="tns:IManagement_CreateProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/DeleteProject" message="tns:IManagement_DeleteProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/DeleteProjectResponse" message="tns:IManagement_DeleteProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/UpdateProject" message="tns:IManagement_UpdateProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/UpdateProjectResponse" message="tns:IManagement_UpdateProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetProjectManager">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/SetProjectManager" message="tns:IManagement_SetProjectManager_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/SetProjectManagerResponse" message="tns:IManagement_SetProjectManager_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectManager">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetProjectManager" message="tns:IManagement_GetProjectManager_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetProjectManagerResponse" message="tns:IManagement_GetProjectManager_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetTask" message="tns:IManagement_GetTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetTaskResponse" message="tns:IManagement_GetTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTasks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetTasks" message="tns:IManagement_GetTasks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetTasksResponse" message="tns:IManagement_GetTasks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QueryForTaks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/QueryForTaks" message="tns:IManagement_QueryForTaks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/QueryForTaksResponse" message="tns:IManagement_QueryForTaks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/CreateTask" message="tns:IManagement_CreateTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/CreateTaskResponse" message="tns:IManagement_CreateTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/DeleteTask" message="tns:IManagement_DeleteTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/DeleteTaskResponse" message="tns:IManagement_DeleteTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/UpdateTask" message="tns:IManagement_UpdateTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/UpdateTaskResponse" message="tns:IManagement_UpdateTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetEmployee" message="tns:IManagement_GetEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetEmployeeResponse" message="tns:IManagement_GetEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployees">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetEmployees" message="tns:IManagement_GetEmployees_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetEmployeesResponse" message="tns:IManagement_GetEmployees_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeSubordinates">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetEmployeeSubordinates" message="tns:IManagement_GetEmployeeSubordinates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetEmployeeSubordinatesResponse" message="tns:IManagement_GetEmployeeSubordinates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeManager">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetEmployeeManager" message="tns:IManagement_GetEmployeeManager_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetEmployeeManagerResponse" message="tns:IManagement_GetEmployeeManager_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeTimesheetsForPeriod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetEmployeeTimesheetsForPeriod" message="tns:IManagement_GetEmployeeTimesheetsForPeriod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetEmployeeTimesheetsForPeriodResponse" message="tns:IManagement_GetEmployeeTimesheetsForPeriod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/CreateEmployee" message="tns:IManagement_CreateEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/CreateEmployeeResponse" message="tns:IManagement_CreateEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/DeleteEmployee" message="tns:IManagement_DeleteEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/DeleteEmployeeResponse" message="tns:IManagement_DeleteEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/UpdateEmployee" message="tns:IManagement_UpdateEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/UpdateEmployeeResponse" message="tns:IManagement_UpdateEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSubordinate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/AddSubordinate" message="tns:IManagement_AddSubordinate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/AddSubordinateResponse" message="tns:IManagement_AddSubordinate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSubordinate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/DeleteSubordinate" message="tns:IManagement_DeleteSubordinate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/DeleteSubordinateResponse" message="tns:IManagement_DeleteSubordinate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimesheet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetTimesheet" message="tns:IManagement_GetTimesheet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetTimesheetResponse" message="tns:IManagement_GetTimesheet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimesheets">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetTimesheets" message="tns:IManagement_GetTimesheets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetTimesheetsResponse" message="tns:IManagement_GetTimesheets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimesheetsNeedAction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetTimesheetsNeedAction" message="tns:IManagement_GetTimesheetsNeedAction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetTimesheetsNeedActionResponse" message="tns:IManagement_GetTimesheetsNeedAction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimesheetHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetTimesheetHistory" message="tns:IManagement_GetTimesheetHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetTimesheetHistoryResponse" message="tns:IManagement_GetTimesheetHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBranch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetBranch" message="tns:IManagement_GetBranch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetBranchResponse" message="tns:IManagement_GetBranch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBranchess">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetBranchess" message="tns:IManagement_GetBranchess_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetBranchessResponse" message="tns:IManagement_GetBranchess_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateBranch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/CreateBranch" message="tns:IManagement_CreateBranch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/CreateBranchResponse" message="tns:IManagement_CreateBranch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBranch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/DeleteBranch" message="tns:IManagement_DeleteBranch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/DeleteBranchResponse" message="tns:IManagement_DeleteBranch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBranch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/UpdateBranch" message="tns:IManagement_UpdateBranch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/UpdateBranchResponse" message="tns:IManagement_UpdateBranch_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IManagement" type="tns:IManagement">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetProject">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetProjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetManagedProjects">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetManagedProjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectTimesheetsForPeriod">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetProjectTimesheetsForPeriod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryForProjects">
+      <soap:operation soapAction="http://tempuri.org/IManagement/QueryForProjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateProject">
+      <soap:operation soapAction="http://tempuri.org/IManagement/CreateProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <soap:operation soapAction="http://tempuri.org/IManagement/DeleteProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProject">
+      <soap:operation soapAction="http://tempuri.org/IManagement/UpdateProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetProjectManager">
+      <soap:operation soapAction="http://tempuri.org/IManagement/SetProjectManager" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjectManager">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetProjectManager" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTask">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTasks">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetTasks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueryForTaks">
+      <soap:operation soapAction="http://tempuri.org/IManagement/QueryForTaks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTask">
+      <soap:operation soapAction="http://tempuri.org/IManagement/CreateTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTask">
+      <soap:operation soapAction="http://tempuri.org/IManagement/DeleteTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTask">
+      <soap:operation soapAction="http://tempuri.org/IManagement/UpdateTask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployee">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployees">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetEmployees" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeSubordinates">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetEmployeeSubordinates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeManager">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetEmployeeManager" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeTimesheetsForPeriod">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetEmployeeTimesheetsForPeriod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateEmployee">
+      <soap:operation soapAction="http://tempuri.org/IManagement/CreateEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEmployee">
+      <soap:operation soapAction="http://tempuri.org/IManagement/DeleteEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEmployee">
+      <soap:operation soapAction="http://tempuri.org/IManagement/UpdateEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSubordinate">
+      <soap:operation soapAction="http://tempuri.org/IManagement/AddSubordinate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSubordinate">
+      <soap:operation soapAction="http://tempuri.org/IManagement/DeleteSubordinate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTimesheet">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetTimesheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTimesheets">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetTimesheets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTimesheetsNeedAction">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetTimesheetsNeedAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTimesheetHistory">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetTimesheetHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBranch">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetBranch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBranchess">
+      <soap:operation soapAction="http://tempuri.org/IManagement/GetBranchess" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBranch">
+      <soap:operation soapAction="http://tempuri.org/IManagement/CreateBranch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBranch">
+      <soap:operation soapAction="http://tempuri.org/IManagement/DeleteBranch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBranch">
+      <soap:operation soapAction="http://tempuri.org/IManagement/UpdateBranch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Management">
+    <wsdl:port name="BasicHttpBinding_IManagement" binding="tns:BasicHttpBinding_IManagement">
+      <soap:address location="http://localhost:51548/Management.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
