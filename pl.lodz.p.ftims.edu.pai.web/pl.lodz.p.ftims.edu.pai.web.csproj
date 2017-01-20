@@ -179,6 +179,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\TimesheetModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\TimesheetService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -277,10 +278,18 @@
     <None Include="Service References\TimesheetService\Management2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Manage\View.cshtml" />
+    <Content Include="Views\Manage\Users.cshtml" />
+    <Content Include="Views\Manage\UserDetails.cshtml" />
+    <Content Include="Views\Manage\EditUser.cshtml" />
+    <Content Include="Views\Account\AddUser.cshtml" />
+    <Content Include="Views\Timesheet\Index.cshtml" />
+    <Content Include="Views\Timesheet\Step1.cshtml" />
+    <Content Include="Views\Timesheet\Step2.cshtml" />
+    <Content Include="Views\Timesheet\Review.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Timesheet\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

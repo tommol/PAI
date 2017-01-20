@@ -163,10 +163,6 @@ namespace pl.lodz.p.ftims.edu.pai.central
         [Description("Gets history of timesheet")]
         List<Audit> GetTimesheetHistory(string id, int start = 0, int limit = 0);
         [OperationContract]
-        [WebGet(BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/timesheet/employee/{id}")]
-        [Description("Gets list of timesheets which needs action made by employee")]
-        List<Timesheet> GetTimesheetsNeedAction(string id);
-        [OperationContract]
         [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "POST", UriTemplate = "/timesheet")]
         [Description("Adds a timesheet")]
         Timesheet CreateTimesheet(CreateTimesheet createTimesheet);

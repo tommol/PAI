@@ -23,12 +23,12 @@
   <xs:element name="ArrayOfTimesheet" nillable="true" type="tns:ArrayOfTimesheet" />
   <xs:complexType name="Timesheet">
     <xs:sequence>
+      <xs:element minOccurs="0" name="EndDay" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Entries" nillable="true" type="tns:ArrayOfEntry" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="StartDay" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Status" type="xs:int" />
       <xs:element minOccurs="0" name="UserId" type="xs:int" />
-      <xs:element minOccurs="0" name="WeekEnd" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="WeekStart" type="xs:dateTime" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Timesheet" nillable="true" type="tns:Timesheet" />
@@ -118,6 +118,40 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Audit" nillable="true" type="tns:Audit" />
+  <xs:complexType name="CreateTimesheet">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndDay" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Entries" nillable="true" type="tns:ArrayOfCreateEntry" />
+      <xs:element minOccurs="0" name="StartDay" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreateTimesheet" nillable="true" type="tns:CreateTimesheet" />
+  <xs:complexType name="ArrayOfCreateEntry">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CreateEntry" nillable="true" type="tns:CreateEntry" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCreateEntry" nillable="true" type="tns:ArrayOfCreateEntry" />
+  <xs:complexType name="CreateEntry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Hours" type="xs:int" />
+      <xs:element minOccurs="0" name="ProjectId" type="xs:int" />
+      <xs:element minOccurs="0" name="TaskId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreateEntry" nillable="true" type="tns:CreateEntry" />
+  <xs:complexType name="CreateAudit">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Change" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NewStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="Operator" type="xs:int" />
+      <xs:element minOccurs="0" name="PreviousStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="Timesheet" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreateAudit" nillable="true" type="tns:CreateAudit" />
   <xs:complexType name="Branch">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />

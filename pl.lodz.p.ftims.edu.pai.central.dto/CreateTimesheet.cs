@@ -8,12 +8,12 @@ namespace pl.lodz.p.ftims.edu.pai.central.dto
     public class CreateTimesheet
     {
         [DataMember]
-        public DateTime WeekStart { get; set; }
+        public DateTime StartDay { get; set; }
         [DataMember]
-        public DateTime WeekEnd { get; set; }
+        public DateTime EndDay { get; set; }
         [DataMember]
         public List<CreateEntry> Entries { get; set; }
-        /// Do usunięcia jak będzie autoryzacja
+        [DataMember]
         public int UserId { get; set; }
     }
 }

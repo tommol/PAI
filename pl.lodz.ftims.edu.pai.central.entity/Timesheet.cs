@@ -5,6 +5,10 @@ namespace pl.lodz.p.ftims.edu.pai.central.entity
 {
     public class Timesheet
     {
+        public Timesheet()
+        {
+
+        }
         public int Id { get; set; }
         public DateTime StartDay { get; set; }
         public DateTime EndDay { get; set; }

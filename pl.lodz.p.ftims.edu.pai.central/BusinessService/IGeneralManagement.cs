@@ -32,7 +32,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
         List<Employee> AddSubordinate(int employeeId, int subordinateId);
         List<Employee> DeleteSubordinate(int employeeId, int subordinateId);
         List<Timesheet> GetProjectTimesheets(int projectId, DateTime start, DateTime end);
-        List<Timesheet> GetEmployeeTimesheets(int employeeId, DateTime start, DateTime end);
+        List<Timesheet> GetEmployeeTimesheets(int employeeId, DateTime? start, DateTime? end);
         Timesheet GetTimesheet(int id);
         List<Timesheet> GetTimesheets(int start = 0, int limit = 0);
 
@@ -42,6 +42,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
         void DeleteBranch(int id);
         Branch UpdateBranch(int id, Branch project);
         List<Employee> EmployeesInBranch(int id, int start = 0, int limit = 0);
-        List<Timesheet> GetTimesheetNeedsAction(int start = 0, int limit = 0);
+        List<Timesheet> GetTimesheetNeedsAction(int employeeId,int start = 0, int limit = 0);
+        Timesheet CreateTimesheet(CreateTimesheet timesheet);
     }
 }

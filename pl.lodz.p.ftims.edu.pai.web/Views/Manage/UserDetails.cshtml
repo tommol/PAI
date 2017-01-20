@@ -1,0 +1,59 @@
+﻿@model pl.lodz.p.ftims.edu.pai.web.Models.UserDetailsViewModel
+
+@{
+    ViewBag.Title = "UserDetails";
+}
+
+<h2>UserDetails</h2>
+
+<div>
+    <h4>UserDetailsViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApiId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApiId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>@Html.DisplayNameFor(model => model.Roles)</dt>
+        <dd>
+            <ul>
+                @foreach (var role in Model.Roles)
+                {
+                    <li>@role.Name</li>
+                }
+            </ul>
+
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edycja", "EditUser", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-default" }) 
+    @Html.ActionLink("Powrót", "Users",new { }, htmlAttributes: new { @class = "btn btn-link btn-default" })
+</p>

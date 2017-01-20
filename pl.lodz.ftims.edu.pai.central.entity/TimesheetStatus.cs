@@ -2,8 +2,8 @@
 {
     public enum TimesheetStatus
     {
-        Submitted =1,
-        Accepted =2,
+        Submitted =0,
+        Accepted =1,
         Rejected =3
     }
 }

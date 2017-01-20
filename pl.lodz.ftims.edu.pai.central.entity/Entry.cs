@@ -12,5 +12,10 @@ namespace pl.lodz.p.ftims.edu.pai.central.entity
         public virtual Task Task { get; set; }
 
         public virtual Timesheet Timesheet { get; set; }
+
+        public Entry()
+        {
+
+        }
     }
 }

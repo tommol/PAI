@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using pl.lodz.p.ftims.edu.pai.web.Models;
+using System.Collections.Generic;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace pl.lodz.p.ftims.edu.pai.web.Controllers
 {
@@ -15,15 +17,17 @@ namespace pl.lodz.p.ftims.edu.pai.web.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
 
         public ManageController()
         {
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManager = roleManager;
         }
 
         public ApplicationSignInManager SignInManager
@@ -32,9 +36,9 @@ namespace pl.lodz.p.ftims.edu.pai.web.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -50,6 +54,17 @@ namespace pl.lodz.p.ftims.edu.pai.web.Controllers
             }
         }
 
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
+        }
         //
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
@@ -333,7 +348,98 @@ namespace pl.lodz.p.ftims.edu.pai.web.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        [Authorize(Roles = "ADMIN")]
+        public ActionResult Users()
+        {
+            var allUsers = ApplicationDbContext.Create().GetAllUsers();
+            IEnumerable<UserListItemViewModel> model;
+            model = allUsers.Select(t => new UserListItemViewModel() { Id = t.Id, ApiId = t.ApiId, Email = t.UserName , Name = t.FirstName, LastName = t.LastName});
+            return View(model);
+        }
+        [Authorize(Roles = "ADMIN")]
+        public ActionResult UserDetails(string id)
+        {
+            TimesheetService.IManagement service = new TimesheetService.ManagementClient();
+            var user = UserManager.FindById(id);
+            var employee = service.GetEmployee(user.ApiId.ToString());
+            var model = new UserDetailsViewModel()
+            {
+                Id = user.Id,
+                Email = user.Email,
+                Name = employee.Name,
+                LastName = employee.LastName,
+                ApiId = user.ApiId,
+                Roles = user.Roles.Select(t => new RoleViewvModel() { Id = t.RoleId, Name = RoleManager.FindById(t.RoleId).Name }).ToList()
+            };
+            
+            
+            return View(model);
+        }
+        [Authorize(Roles = "ADMIN")]
+        public ActionResult EditUser(string id)
+        {
+            var user = UserManager.FindById(id);
+            var roles = RoleManager.Roles;
+            var model = new EditUserViewModel()
+            {
+                Id = user.Id,
+                Email = user.Email,
+                Name = user.FirstName,
+                LastName = user.LastName,
+                ApiId = user.ApiId
+
+            };
+            model.Roles = new List<EditRolesViewModel>();
+            foreach (var role in roles)
+            {
+                var r = new EditRolesViewModel();
+                r.Id = role.Id;
+                r.Name = role.Name;
+                if (user.Roles.Where(t => t.RoleId == r.Id).SingleOrDefault() != null)
+                {
+                    r.Selected = true;
+                }
+                else
+                {
+                    r.Selected = false;
+                }
+                model.Roles.Add(r);
+            }
+            return View(model);
+        }
+
+        public ActionResult SaveUser(EditUserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                TimesheetService.IManagement service = new TimesheetService.ManagementClient();
+                TimesheetService.Employee emp = new TimesheetService.Employee();
+                emp.Id = model.ApiId;
+                emp.LastName = model.LastName;
+                emp.Name = model.Name;
+                emp.Email = model.Email;
+                service.UpdateEmployee(model.ApiId.ToString(), emp);
+                var roles = RoleManager.Roles;
+                var currentRoles = UserManager.FindById(model.Id).Roles;
+                foreach (var role in model.Roles)
+                {
+                    role.Name = roles.Single(t => t.Id == role.Id).Name;
+                }
+                List<string> toRemove = new List<string>();
+                foreach(var item in currentRoles)
+                {
+                    toRemove.Add(RoleManager.FindById(item.RoleId).Name);
+                }
+                var toAdd = model.Roles.Where(r => r.Selected == true).Select(r => r.Name).ToArray();
+                
+                UserManager.RemoveFromRoles(model.Id, toRemove.ToArray());       
+                UserManager.AddToRoles(model.Id, toAdd);           
+                return RedirectToAction("UserDetails", "Manage", new { id = model.Id });
+            }
+            return RedirectToAction("EditUser", "Manage", new { id = model.Id });
+        }
+
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -353,6 +459,14 @@ namespace pl.lodz.p.ftims.edu.pai.web.Controllers
             }
         }
 
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            return RedirectToAction("Index", "Home");
+        }
         private bool HasPassword()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
@@ -384,6 +498,6 @@ namespace pl.lodz.p.ftims.edu.pai.web.Controllers
             Error
         }
 
-#endregion
+        #endregion
     }
 }

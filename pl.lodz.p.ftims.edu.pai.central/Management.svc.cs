@@ -103,8 +103,16 @@ namespace pl.lodz.p.ftims.edu.pai.central
         public List<Timesheet> GetEmployeeTimesheetsForPeriod(string id, string start, string end)
         {
             int employeeId = int.Parse(id);
-            DateTime startDate = DateTime.Parse(start);
-            DateTime endDate = DateTime.Parse(end);
+            DateTime? startDate = null;
+            DateTime? endDate = null;
+            if (start != string.Empty)
+            {
+                startDate = DateTime.Parse(start);
+            }
+            if (end != string.Empty)
+            {
+                endDate = DateTime.Parse(end);
+            }
             return businessService.GetEmployeeTimesheets(employeeId, startDate, endDate);
         }
 
@@ -168,7 +176,7 @@ namespace pl.lodz.p.ftims.edu.pai.central
 
         public List<Timesheet> GetTimesheetsNeedAction(string id, int start = 0, int limit = 0)
         {
-            throw new NotImplementedException();
+           return businessService.GetTimesheetNeedsAction(int.Parse(id), start, limit);
         }
 
         public List<Project> QueryForProjects(string query, int start = 0, int limit = 0)
@@ -224,7 +232,7 @@ namespace pl.lodz.p.ftims.edu.pai.central
 
         public Timesheet CreateTimesheet(CreateTimesheet createTimesheet)
         {
-            throw new NotImplementedException();
+            return businessService.CreateTimesheet(createTimesheet);
         }
 
         public Timesheet AcceptTimesheet(string id, CreateAudit createAudit)

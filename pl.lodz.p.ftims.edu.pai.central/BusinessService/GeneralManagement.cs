@@ -115,13 +115,17 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
 
         public List<Employee> GetEmployeeSubordinates(int id, int start = 0, int limit = 0)
         {
-            var list = limit != 0 ? unitOfWork.EmployeeRepository.GetById(id).Subordinates.Skip(start).Take(limit) : unitOfWork.EmployeeRepository.GetById(id).Subordinates;
-            return mapper.Map<IEnumerable<entity.Employee>, List<Employee>>(list);
+            IEnumerable<entity.Employee> list = GetListOfSubordinates(id, start, limit); return mapper.Map<IEnumerable<entity.Employee>, List<Employee>>(list);
         }
 
-        public List<Timesheet> GetEmployeeTimesheets(int employeeId, DateTime start, DateTime end)
+        private IEnumerable<entity.Employee> GetListOfSubordinates(int id, int start, int limit)
         {
-            var list = unitOfWork.TimesheetRepository.Find(x => x.Applicant.Id == employeeId && (x.StartDay >= start && x.EndDay <= end));
+            return limit != 0 ? unitOfWork.EmployeeRepository.GetById(id).Subordinates.Skip(start).Take(limit) : unitOfWork.EmployeeRepository.GetById(id).Subordinates;
+        }
+
+        public List<Timesheet> GetEmployeeTimesheets(int employeeId, DateTime? start, DateTime? end)
+        {
+            var list = unitOfWork.TimesheetRepository.Find(x => x.Applicant.Id == employeeId && (start.HasValue ? x.StartDay >= start : true) && (end.HasValue ? x.EndDay <= end : true));
             return mapper.Map<IEnumerable<entity.Timesheet>, List<Timesheet>>(list);
         }
 
@@ -259,9 +263,10 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
             return mapper.Map<IEnumerable<entity.Employee>, List<Employee>>(list);
         }
 
-        public List<Timesheet> GetTimesheetNeedsAction(int start = 0, int limit = 0)
+        public List<Timesheet> GetTimesheetNeedsAction(int employeeId, int start = 0, int limit = 0)
         {
-            var list = limit != 0 ? unitOfWork.TimesheetRepository.GetAll().Where(t => t.AuditData.Any(a => a.NewStatus == entity.TimesheetStatus.Submitted)).Skip(start).Take(limit) : unitOfWork.TimesheetRepository.GetAll().Where(t => t.AuditData.Any(a => a.NewStatus == entity.TimesheetStatus.Submitted));
+            var subs = GetListOfSubordinates(employeeId, start, limit);
+            var list = limit != 0 ? unitOfWork.TimesheetRepository.GetAll().Where(t => subs.Contains(t.Applicant) && (t.AuditData.Any(a => a.NewStatus == entity.TimesheetStatus.Submitted) || t.AuditData == null || t.AuditData.Count == 0)).Skip(start).Take(limit) : unitOfWork.TimesheetRepository.GetAll().Where(t => subs.Contains(t.Applicant) && (t.AuditData.Any(a => a.NewStatus == entity.TimesheetStatus.Submitted) || t.AuditData == null || t.AuditData.Count == 0));
             return mapper.Map<IEnumerable<entity.Timesheet>, List<Timesheet>>(list);
         }
 
@@ -269,6 +274,23 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
         {
             var manager = unitOfWork.EmployeeRepository.GetById(id).Manager;
             return mapper.Map<Employee>(manager);
+        }
+
+        public Timesheet CreateTimesheet(CreateTimesheet timesheet)
+        {
+            entity.Timesheet entity = mapper.Map<entity.Timesheet>(timesheet);
+            entity.Applicant = unitOfWork.EmployeeRepository.GetById(timesheet.UserId);
+            entity.Entries.Clear();
+            foreach (var item in timesheet.Entries)
+            {
+                var entryEntity = mapper.Map<entity.Entry>(item);
+                entryEntity.Project = unitOfWork.ProjectRepository.GetById(item.ProjectId);
+                entryEntity.Task = unitOfWork.TaskRepository.GetById(item.TaskId);
+                entity.Entries.Add(entryEntity);
+            }
+            unitOfWork.TimesheetRepository.Add(entity);
+            unitOfWork.Commit();
+            return mapper.Map<Timesheet>(entity);
         }
     }
 }

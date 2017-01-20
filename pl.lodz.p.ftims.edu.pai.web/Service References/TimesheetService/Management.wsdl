@@ -187,6 +187,24 @@
   <wsdl:message name="IManagement_GetTimesheetHistory_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTimesheetHistoryResponse" />
   </wsdl:message>
+  <wsdl:message name="IManagement_CreateTimesheet_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTimesheet" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_CreateTimesheet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTimesheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_AcceptTimesheet_InputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptTimesheet" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_AcceptTimesheet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AcceptTimesheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_RejectTimesheet_InputMessage">
+    <wsdl:part name="parameters" element="tns:RejectTimesheet" />
+  </wsdl:message>
+  <wsdl:message name="IManagement_RejectTimesheet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RejectTimesheetResponse" />
+  </wsdl:message>
   <wsdl:message name="IManagement_GetBranch_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBranch" />
   </wsdl:message>
@@ -337,6 +355,18 @@
     <wsdl:operation name="GetTimesheetHistory">
       <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetTimesheetHistory" message="tns:IManagement_GetTimesheetHistory_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IManagement/GetTimesheetHistoryResponse" message="tns:IManagement_GetTimesheetHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTimesheet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/CreateTimesheet" message="tns:IManagement_CreateTimesheet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/CreateTimesheetResponse" message="tns:IManagement_CreateTimesheet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AcceptTimesheet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/AcceptTimesheet" message="tns:IManagement_AcceptTimesheet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/AcceptTimesheetResponse" message="tns:IManagement_AcceptTimesheet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RejectTimesheet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IManagement/RejectTimesheet" message="tns:IManagement_RejectTimesheet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IManagement/RejectTimesheetResponse" message="tns:IManagement_RejectTimesheet_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetBranch">
       <wsdl:input wsaw:Action="http://tempuri.org/IManagement/GetBranch" message="tns:IManagement_GetBranch_InputMessage" />
@@ -624,6 +654,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetTimesheetHistory">
       <soap:operation soapAction="http://tempuri.org/IManagement/GetTimesheetHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTimesheet">
+      <soap:operation soapAction="http://tempuri.org/IManagement/CreateTimesheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcceptTimesheet">
+      <soap:operation soapAction="http://tempuri.org/IManagement/AcceptTimesheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RejectTimesheet">
+      <soap:operation soapAction="http://tempuri.org/IManagement/RejectTimesheet" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

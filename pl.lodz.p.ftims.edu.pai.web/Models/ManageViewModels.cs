@@ -83,4 +83,45 @@ namespace pl.lodz.p.ftims.edu.pai.web.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+
+    public class UserDetailsViewModel
+    {
+        public string Id { get; set; }
+        public int ApiId { get; set; }
+        public string Email { get; set; }
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public List<RoleViewvModel> Roles { get; set; }
+
+    }
+    public class RoleViewvModel
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+    }
+    public class EditUserViewModel
+    {
+        public string Id { get; set; }
+        public int ApiId { get; set; }
+        public string Email { get; set; }
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public List<EditRolesViewModel> Roles { get; set; }
+        public List<string>SelectedRole { get; set; }
+        
+    }
+    public class EditRolesViewModel
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public bool Selected { get; set; }
+    }
+    public class UserListItemViewModel
+    {
+        public string Id { get; set; }
+        public int ApiId { get; set; }
+        public string Email { get; set; }
+        public string Name { get; set; }
+        public string LastName { get; set; }
+    }
 }

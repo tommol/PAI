@@ -10,9 +10,9 @@ namespace pl.lodz.p.ftims.edu.pai.central.dto
         [DataMember]
         public int Id { get; set; }
         [DataMember]
-        public DateTime WeekStart { get; set; }
+        public DateTime StartDay { get; set; }
         [DataMember]
-        public DateTime WeekEnd { get; set; }
+        public DateTime EndDay { get; set; }
         [DataMember]
         public int Status { get; set; }
         [DataMember]
@@ -21,11 +21,15 @@ namespace pl.lodz.p.ftims.edu.pai.central.dto
         /// Do usunięcia jak będzie autoryzacja
         public int UserId { get; set; }
 
+        public Timesheet()
+        {
+
+        }
         public Timesheet(int id, DateTime start, DateTime end, int status, List<Entry> entries)
         {
             Id = id;
-            WeekStart = start;
-            WeekEnd = end;
+            StartDay = start;
+            EndDay = end;
             Status = status;
             Entries = entries;
 

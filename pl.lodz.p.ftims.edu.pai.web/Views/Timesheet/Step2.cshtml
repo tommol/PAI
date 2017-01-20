@@ -1,0 +1,87 @@
+﻿@model pl.lodz.p.ftims.edu.pai.web.Models.CreateTimesheetStep2ViewModel
+
+@{
+    ViewBag.Title = "Step2";
+}
+
+<h2>Step2</h2>
+
+
+@using (Html.BeginForm("Submit", "Timesheet", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>CreateTimesheetStep2ViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartPeriod, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartPeriod, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                @Html.ValidationMessageFor(model => model.StartPeriod, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndPeriod, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EndPeriod, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                @Html.ValidationMessageFor(model => model.EndPeriod, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @Html.HiddenFor(model => model.Owner, new { htmlAttributes = new { @class = "form-control" } })
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-3">Projekt</div>
+                <div class="col-md-2">Zadanie</div>
+                <div class="col-md-1">@Html.DisplayFor(m => m.Entries[0].Date1)</div>
+                <div class="col-md-1">@Html.DisplayFor(m => m.Entries[0].Date2)</div>
+                <div class="col-md-1">@Html.DisplayFor(m => m.Entries[0].Date3)</div>
+                <div class="col-md-1">@Html.DisplayFor(m => m.Entries[0].Date4)</div>
+                <div class="col-md-1">@Html.DisplayFor(m => m.Entries[0].Date5)</div>
+                <div class="col-md-1">@Html.DisplayFor(m => m.Entries[0].Date6)</div>
+                <div class="col-md-1">@Html.DisplayFor(m => m.Entries[0].Date7)</div>
+            </div>
+            @for (int i = 0; i < Model.Entries.Count; i++)
+            {
+
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(m => m.Entries[i].Project, Model.Projects)
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DropDownListFor(m => m.Entries[i].Task, Model.Tasks)
+                    </div>
+                    <div class="col-md-1">@Html.TextBoxFor(m => m.Entries[i].Day1)@Html.HiddenFor(m => m.Entries[i].Date1)</div>
+                    <div class="col-md-1">@Html.TextBoxFor(m => m.Entries[i].Day2)@Html.HiddenFor(m => m.Entries[i].Date2)</div>
+                    <div class="col-md-1">@Html.TextBoxFor(m => m.Entries[i].Day3)@Html.HiddenFor(m => m.Entries[i].Date3)</div>
+                    <div class="col-md-1">@Html.TextBoxFor(m => m.Entries[i].Day4)@Html.HiddenFor(m => m.Entries[i].Date4)</div>
+                    <div class="col-md-1">@Html.TextBoxFor(m => m.Entries[i].Day5)@Html.HiddenFor(m => m.Entries[i].Date5)</div>
+                    <div class="col-md-1">@Html.TextBoxFor(m => m.Entries[i].Day6)@Html.HiddenFor(m => m.Entries[i].Date6)</div>
+                    <div class="col-md-1">@Html.TextBoxFor(m => m.Entries[i].Day7)@Html.HiddenFor(m => m.Entries[i].Date7)</div>
+                </div>
+            }
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddRows, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddRows, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Dalej" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Anuluj", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
