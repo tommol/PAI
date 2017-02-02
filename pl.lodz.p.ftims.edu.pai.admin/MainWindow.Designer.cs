@@ -116,6 +116,7 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Pracownicy";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Enter += new System.EventHandler(this.tabEmployee_Enter);
             // 
             // gridEmployee
             // 
