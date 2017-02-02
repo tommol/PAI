@@ -142,16 +142,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CreateEntry" nillable="true" type="tns:CreateEntry" />
-  <xs:complexType name="CreateAudit">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Change" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="NewStatus" type="xs:int" />
-      <xs:element minOccurs="0" name="Operator" type="xs:int" />
-      <xs:element minOccurs="0" name="PreviousStatus" type="xs:int" />
-      <xs:element minOccurs="0" name="Timesheet" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="CreateAudit" nillable="true" type="tns:CreateAudit" />
   <xs:complexType name="Branch">
     <xs:sequence>
       <xs:element minOccurs="0" name="Id" type="xs:int" />

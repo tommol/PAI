@@ -168,12 +168,12 @@ namespace pl.lodz.p.ftims.edu.pai.central
         Timesheet CreateTimesheet(CreateTimesheet createTimesheet);
         [OperationContract]
         [Description("Accept timesheet")]
-        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "POST", UriTemplate = "/timesheet/{id}/action?type=acceptance")]
-        Timesheet AcceptTimesheet(string id, CreateAudit createAudit);
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "POST", UriTemplate = "/timesheet/{id}/{employeeId}/action?type=acceptance")]
+        Timesheet AcceptTimesheet(string id, string employeeId);
         [OperationContract]
         [Description("Reject timesheet")]
-        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "POST", UriTemplate = "/timesheet/{id}/action?type=rejection")]
-        Timesheet RejectTimesheet(string id, CreateAudit createAudit);
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare, Method = "POST", UriTemplate = "/timesheet/{id}/{employeeId}/action?type=rejection")]
+        Timesheet RejectTimesheet(string id,string employeeId);
 
 
         #endregion TimesheetMethods

@@ -87,10 +87,14 @@ namespace pl.lodz.p.ftims.edu.pai.web.Models
     public class UserDetailsViewModel
     {
         public string Id { get; set; }
+        
         public int ApiId { get; set; }
         public string Email { get; set; }
+        [Display(Name="Imię")]
         public string Name { get; set; }
+        [Display(Name = "Nazwisko")]
         public string LastName { get; set; }
+        [Display(Name = "Role")]
         public List<RoleViewvModel> Roles { get; set; }
 
     }
@@ -102,10 +106,13 @@ namespace pl.lodz.p.ftims.edu.pai.web.Models
     public class EditUserViewModel
     {
         public string Id { get; set; }
-        public int ApiId { get; set; }
+        public int ApiId { get; set; }      
         public string Email { get; set; }
+        [Display(Name="Imię")]
         public string Name { get; set; }
+        [Display(Name = "Nazwisko")]
         public string LastName { get; set; }
+        [Display(Name = "Role w systemie")]
         public List<EditRolesViewModel> Roles { get; set; }
         public List<string>SelectedRole { get; set; }
         

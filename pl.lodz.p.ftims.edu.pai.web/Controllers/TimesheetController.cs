@@ -54,7 +54,7 @@ namespace pl.lodz.p.ftims.edu.pai.web.Controllers
 
             TimesheetService.ManagementClient client = new TimesheetService.ManagementClient();
             TimesheetService.Timesheet[] timesheets = client.GetEmployeeTimesheetsForPeriod(currentUser.ApiId.ToString(), string.Empty, string.Empty);
-            var model = timesheets.Select(t => new TimesheetListItemViewModel() { Id = t.Id, EndPeriod = t.EndDay, StartPeriod = t.StartDay, status = t.Status });
+            var model = timesheets.Select(t => new TimesheetListItemViewModel() { Id = t.Id, EndPeriod = t.EndDay, StartPeriod = t.StartDay, Status = t.Status });
 
 
             return View(model);
@@ -66,7 +66,7 @@ namespace pl.lodz.p.ftims.edu.pai.web.Controllers
 
             TimesheetService.ManagementClient client = new TimesheetService.ManagementClient();
             TimesheetService.Timesheet[] timesheets = client.GetTimesheetsNeedAction(currentUser.ApiId.ToString(), 0, 0);
-            var model = timesheets.Select(t => new TimesheetListItemViewModel() { Id = t.Id, EndPeriod = t.EndDay, StartPeriod = t.StartDay, status = t.Status });
+            var model = timesheets.Select(t => new TimesheetListItemViewModel() { Id = t.Id, EndPeriod = t.EndDay, StartPeriod = t.StartDay, Status = t.Status });
 
 
             return View(model);
@@ -165,7 +165,7 @@ namespace pl.lodz.p.ftims.edu.pai.web.Controllers
                 timesheet.EndDay = model.EndPeriod;
                 timesheet.UserId = model.Owner;
                 List<TimesheetService.CreateEntry> list = new List<TimesheetService.CreateEntry>();
-                foreach(var entry in model.Entries)
+                foreach (var entry in model.Entries)
                 {
                     TimesheetService.CreateEntry tmp = new TimesheetService.CreateEntry();
                     tmp.Date = entry.Date1;
@@ -214,7 +214,56 @@ namespace pl.lodz.p.ftims.edu.pai.web.Controllers
                 service.CreateTimesheet(timesheet);
                 return RedirectToAction("Index");
             }
-            
+        }
+
+        public async System.Threading.Tasks.Task<ActionResult> Decline(int id)
+        {
+            TimesheetService.IManagement service = new TimesheetService.ManagementClient();
+            var currentUser = await UserManager.FindByNameAsync(User.Identity.Name);
+            service.RejectTimesheet(id.ToString(), currentUser.ApiId.ToString());
+            return RedirectToAction("Review");
+        }
+        public async System.Threading.Tasks.Task<ActionResult> Accept(int id)
+        {
+            TimesheetService.IManagement service = new TimesheetService.ManagementClient();
+            var currentUser = await UserManager.FindByNameAsync(User.Identity.Name);
+            service.AcceptTimesheet(id.ToString(), currentUser.ApiId.ToString());
+            return RedirectToAction("Review");
+        }
+
+        public ActionResult View(int id)
+        {
+            var model = new TimesheetViewModel();
+            TimesheetService.IManagement service = new TimesheetService.ManagementClient();
+            var timesheet = service.GetTimesheet(id.ToString());
+            model.Id = timesheet.Id;
+            model.StartPeriod = timesheet.StartDay;
+            model.EndPeriod = timesheet.EndDay;
+            model.Entries = new List<TimesheetEntry>();
+            var entry = CreateEmptyEntry(model.StartPeriod);
+            var sorted = timesheet.Entries.OrderBy(t => t.Date).ToArray();
+            entry.Project = service.GetProject(sorted[0].ProjectId.ToString()).Name;
+            entry.Task = service.GetTask(sorted[0].TaskId.ToString()).Name;
+            entry.Day1 = sorted[0].Hours;
+            entry.Day2 = sorted[1].Hours;
+            entry.Day3 = sorted[2].Hours;
+            entry.Day4 = sorted[3].Hours;
+            entry.Day5 = sorted[4].Hours;
+            entry.Day6 = sorted[5].Hours;
+            entry.Day7 = sorted[6].Hours;
+            model.Entries.Add(entry);
+            var employees = service.GetEmployees(0, 0);
+            model.History = service.GetTimesheetHistory(id.ToString(), 0, 0).Select(
+                t => new TimesheetHistory()
+                {
+                    Date = t.Change,
+                    PreviousStatus = t.PreviousStatus,
+                    NewStatus = t.NewStatus,
+                    UserName = t.Operator.Name + " " + t.Operator.LastName
+                }
+                ).ToList();
+
+            return View(model);
         }
 
     }

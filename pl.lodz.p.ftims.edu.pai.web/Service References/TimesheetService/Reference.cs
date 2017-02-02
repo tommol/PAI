@@ -1054,115 +1054,6 @@ namespace pl.lodz.p.ftims.edu.pai.web.TimesheetService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CreateAudit", Namespace="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto")]
-    [System.SerializableAttribute()]
-    public partial class CreateAudit : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime ChangeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int NewStatusField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int OperatorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PreviousStatusField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TimesheetField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime Change {
-            get {
-                return this.ChangeField;
-            }
-            set {
-                if ((this.ChangeField.Equals(value) != true)) {
-                    this.ChangeField = value;
-                    this.RaisePropertyChanged("Change");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int NewStatus {
-            get {
-                return this.NewStatusField;
-            }
-            set {
-                if ((this.NewStatusField.Equals(value) != true)) {
-                    this.NewStatusField = value;
-                    this.RaisePropertyChanged("NewStatus");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Operator {
-            get {
-                return this.OperatorField;
-            }
-            set {
-                if ((this.OperatorField.Equals(value) != true)) {
-                    this.OperatorField = value;
-                    this.RaisePropertyChanged("Operator");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PreviousStatus {
-            get {
-                return this.PreviousStatusField;
-            }
-            set {
-                if ((this.PreviousStatusField.Equals(value) != true)) {
-                    this.PreviousStatusField = value;
-                    this.RaisePropertyChanged("PreviousStatus");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Timesheet {
-            get {
-                return this.TimesheetField;
-            }
-            set {
-                if ((this.TimesheetField.Equals(value) != true)) {
-                    this.TimesheetField = value;
-                    this.RaisePropertyChanged("Timesheet");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Branch", Namespace="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto")]
     [System.SerializableAttribute()]
     public partial class Branch : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1490,16 +1381,16 @@ namespace pl.lodz.p.ftims.edu.pai.web.TimesheetService {
         System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.web.TimesheetService.Timesheet> CreateTimesheetAsync(pl.lodz.p.ftims.edu.pai.web.TimesheetService.CreateTimesheet createTimesheet);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/AcceptTimesheet", ReplyAction="http://tempuri.org/IManagement/AcceptTimesheetResponse")]
-        pl.lodz.p.ftims.edu.pai.web.TimesheetService.Timesheet AcceptTimesheet(string id, pl.lodz.p.ftims.edu.pai.web.TimesheetService.CreateAudit createAudit);
+        pl.lodz.p.ftims.edu.pai.web.TimesheetService.Timesheet AcceptTimesheet(string id, string employeeId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/AcceptTimesheet", ReplyAction="http://tempuri.org/IManagement/AcceptTimesheetResponse")]
-        System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.web.TimesheetService.Timesheet> AcceptTimesheetAsync(string id, pl.lodz.p.ftims.edu.pai.web.TimesheetService.CreateAudit createAudit);
+        System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.web.TimesheetService.Timesheet> AcceptTimesheetAsync(string id, string employeeId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/RejectTimesheet", ReplyAction="http://tempuri.org/IManagement/RejectTimesheetResponse")]
-        pl.lodz.p.ftims.edu.pai.web.TimesheetService.Timesheet RejectTimesheet(string id, pl.lodz.p.ftims.edu.pai.web.TimesheetService.CreateAudit createAudit);
+        pl.lodz.p.ftims.edu.pai.web.TimesheetService.Timesheet RejectTimesheet(string id, string employeeId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/RejectTimesheet", ReplyAction="http://tempuri.org/IManagement/RejectTimesheetResponse")]
-        System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.web.TimesheetService.Timesheet> RejectTimesheetAsync(string id, pl.lodz.p.ftims.edu.pai.web.TimesheetService.CreateAudit createAudit);
+        System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.web.TimesheetService.Timesheet> RejectTimesheetAsync(string id, string employeeId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/GetBranch", ReplyAction="http://tempuri.org/IManagement/GetBranchResponse")]
         pl.lodz.p.ftims.edu.pai.web.TimesheetService.Branch GetBranch(string id);
@@ -1807,20 +1698,20 @@ namespace pl.lodz.p.ftims.edu.pai.web.TimesheetService {
             return base.Channel.CreateTimesheetAsync(createTimesheet);
         }
         
-        public pl.lodz.p.ftims.edu.pai.web.TimesheetService.Timesheet AcceptTimesheet(string id, pl.lodz.p.ftims.edu.pai.web.TimesheetService.CreateAudit createAudit) {
-            return base.Channel.AcceptTimesheet(id, createAudit);
+        public pl.lodz.p.ftims.edu.pai.web.TimesheetService.Timesheet AcceptTimesheet(string id, string employeeId) {
+            return base.Channel.AcceptTimesheet(id, employeeId);
         }
         
-        public System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.web.TimesheetService.Timesheet> AcceptTimesheetAsync(string id, pl.lodz.p.ftims.edu.pai.web.TimesheetService.CreateAudit createAudit) {
-            return base.Channel.AcceptTimesheetAsync(id, createAudit);
+        public System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.web.TimesheetService.Timesheet> AcceptTimesheetAsync(string id, string employeeId) {
+            return base.Channel.AcceptTimesheetAsync(id, employeeId);
         }
         
-        public pl.lodz.p.ftims.edu.pai.web.TimesheetService.Timesheet RejectTimesheet(string id, pl.lodz.p.ftims.edu.pai.web.TimesheetService.CreateAudit createAudit) {
-            return base.Channel.RejectTimesheet(id, createAudit);
+        public pl.lodz.p.ftims.edu.pai.web.TimesheetService.Timesheet RejectTimesheet(string id, string employeeId) {
+            return base.Channel.RejectTimesheet(id, employeeId);
         }
         
-        public System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.web.TimesheetService.Timesheet> RejectTimesheetAsync(string id, pl.lodz.p.ftims.edu.pai.web.TimesheetService.CreateAudit createAudit) {
-            return base.Channel.RejectTimesheetAsync(id, createAudit);
+        public System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.web.TimesheetService.Timesheet> RejectTimesheetAsync(string id, string employeeId) {
+            return base.Channel.RejectTimesheetAsync(id, employeeId);
         }
         
         public pl.lodz.p.ftims.edu.pai.web.TimesheetService.Branch GetBranch(string id) {

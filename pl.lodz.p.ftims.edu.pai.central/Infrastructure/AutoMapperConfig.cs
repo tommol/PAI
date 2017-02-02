@@ -21,6 +21,7 @@ namespace pl.lodz.p.ftims.edu.pai.central.Infrastructure
                 cfg.CreateMap<dto.CreateTimesheet, entity.Timesheet>();
                 cfg.CreateMap<dto.Entry, entity.Entry>().ReverseMap();
                 cfg.CreateMap<dto.CreateEntry, entity.Entry>();
+                cfg.CreateMap<dto.Audit, entity.Audit>().ReverseMap();
             });
         }
     }

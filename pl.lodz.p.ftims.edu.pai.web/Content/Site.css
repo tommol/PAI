@@ -22,3 +22,35 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#loginForm {
+    border: solid 1px #149c82;
+    background: #149c82;
+    padding: 1em;
+    margin-top: 2em;
+    color: #fff;
+}
+
+.timesheet-form input {
+    max-width: 80px;
+}
+
+.timesheet-form .date-input {
+    max-width: 280px;
+}
+
+.timesheet-form .row-header {
+    font-size: 0.85em;
+    margin-bottom: 1px;
+    border-bottom: solid 2px #149c82;
+    border-top: 1px solid #149c82;
+}
+
+.timesheet-form .row {
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+.role-control{
+    padding: 0.25em;
+    display: inline-block;
+}

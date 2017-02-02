@@ -439,6 +439,50 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CreateTimesheet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto" minOccurs="0" name="createTimesheet" nillable="true" type="q33:CreateTimesheet" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateTimesheetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto" minOccurs="0" name="CreateTimesheetResult" nillable="true" type="q34:Timesheet" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AcceptTimesheet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="employeeId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AcceptTimesheetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto" minOccurs="0" name="AcceptTimesheetResult" nillable="true" type="q35:Timesheet" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RejectTimesheet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="employeeId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RejectTimesheetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto" minOccurs="0" name="RejectTimesheetResult" nillable="true" type="q36:Timesheet" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetBranch">
     <xs:complexType>
       <xs:sequence>
@@ -449,7 +493,7 @@
   <xs:element name="GetBranchResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto" minOccurs="0" name="GetBranchResult" nillable="true" type="q33:Branch" />
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto" minOccurs="0" name="GetBranchResult" nillable="true" type="q37:Branch" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -464,21 +508,21 @@
   <xs:element name="GetBranchessResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto" minOccurs="0" name="GetBranchessResult" nillable="true" type="q34:ArrayOfBranch" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto" minOccurs="0" name="GetBranchessResult" nillable="true" type="q38:ArrayOfBranch" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateBranch">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto" minOccurs="0" name="createBranch" nillable="true" type="q35:CreateBranch" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto" minOccurs="0" name="createBranch" nillable="true" type="q39:CreateBranch" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateBranchResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto" minOccurs="0" name="CreateBranchResult" nillable="true" type="q36:Branch" />
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto" minOccurs="0" name="CreateBranchResult" nillable="true" type="q40:Branch" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -498,14 +542,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
-        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto" minOccurs="0" name="project" nillable="true" type="q37:Branch" />
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto" minOccurs="0" name="project" nillable="true" type="q41:Branch" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateBranchResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto" minOccurs="0" name="UpdateBranchResult" nillable="true" type="q38:Branch" />
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/pl.lodz.p.ftims.edu.pai.central.dto" minOccurs="0" name="UpdateBranchResult" nillable="true" type="q42:Branch" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

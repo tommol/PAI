@@ -266,7 +266,9 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
         public List<Timesheet> GetTimesheetNeedsAction(int employeeId, int start = 0, int limit = 0)
         {
             var subs = GetListOfSubordinates(employeeId, start, limit);
-            var list = limit != 0 ? unitOfWork.TimesheetRepository.GetAll().Where(t => subs.Contains(t.Applicant) && (t.AuditData.Any(a => a.NewStatus == entity.TimesheetStatus.Submitted) || t.AuditData == null || t.AuditData.Count == 0)).Skip(start).Take(limit) : unitOfWork.TimesheetRepository.GetAll().Where(t => subs.Contains(t.Applicant) && (t.AuditData.Any(a => a.NewStatus == entity.TimesheetStatus.Submitted) || t.AuditData == null || t.AuditData.Count == 0));
+            var list = limit != 0 ? unitOfWork.TimesheetRepository.GetAll().Where(t => subs.Contains(t.Applicant) && t.Status == entity.TimesheetStatus.Submitted).Skip(start).Take(limit) : unitOfWork.TimesheetRepository.GetAll().Where(t => subs.Contains(t.Applicant) && t.Status == entity.TimesheetStatus.Submitted);
+        
+            
             return mapper.Map<IEnumerable<entity.Timesheet>, List<Timesheet>>(list);
         }
 
@@ -278,19 +280,79 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
 
         public Timesheet CreateTimesheet(CreateTimesheet timesheet)
         {
-            entity.Timesheet entity = mapper.Map<entity.Timesheet>(timesheet);
-            entity.Applicant = unitOfWork.EmployeeRepository.GetById(timesheet.UserId);
-            entity.Entries.Clear();
+            entity.Timesheet timesheetEntity = mapper.Map<entity.Timesheet>(timesheet);
+            timesheetEntity.Applicant = unitOfWork.EmployeeRepository.GetById(timesheet.UserId);
+            timesheetEntity.Entries.Clear();
             foreach (var item in timesheet.Entries)
             {
                 var entryEntity = mapper.Map<entity.Entry>(item);
                 entryEntity.Project = unitOfWork.ProjectRepository.GetById(item.ProjectId);
                 entryEntity.Task = unitOfWork.TaskRepository.GetById(item.TaskId);
-                entity.Entries.Add(entryEntity);
+                timesheetEntity.Entries.Add(entryEntity);
             }
-            unitOfWork.TimesheetRepository.Add(entity);
+            entity.Audit submission = new entity.Audit();
+            submission.NewStatus = entity.TimesheetStatus.Submitted;
+            submission.Operator = timesheetEntity.Applicant;
+            submission.Timesheet = timesheetEntity;
+            submission.Change = DateTime.Now;
+            timesheetEntity.AuditData = new List<entity.Audit>();
+            timesheetEntity.AuditData.Add(submission);
+            unitOfWork.TimesheetRepository.Add(timesheetEntity);
             unitOfWork.Commit();
-            return mapper.Map<Timesheet>(entity);
+            return mapper.Map<Timesheet>(timesheetEntity);
+        }
+
+        public Timesheet AcceptTimesheet(int id,int employeeId)
+        {
+            var timesheet = unitOfWork.TimesheetRepository.GetById(id);
+            
+            var audit = new entity.Audit();
+            audit.Timesheet = timesheet;
+            audit.Operator = unitOfWork.EmployeeRepository.GetById(employeeId);
+            var previous = timesheet.AuditData.OrderByDescending(t => t.Change).FirstOrDefault();
+            if (previous != null)
+            {
+                audit.PreviousStatus = previous.NewStatus;
+            }
+            else
+            {
+                audit.PreviousStatus = entity.TimesheetStatus.Submitted;
+            }
+            audit.NewStatus = entity.TimesheetStatus.Accepted;
+            audit.Change = DateTime.Now;
+            timesheet.Status = entity.TimesheetStatus.Accepted;
+            unitOfWork.AuditRepository.Add(audit);
+            unitOfWork.Commit();
+            return mapper.Map<Timesheet>(timesheet);
+
+        }
+
+        public Timesheet RejectTimesheet(int id, int employeeId)
+        {
+            var timesheet = unitOfWork.TimesheetRepository.GetById(id);
+
+            var audit = new entity.Audit();
+            audit.Timesheet = timesheet;
+            audit.Operator = unitOfWork.EmployeeRepository.GetById(employeeId);
+            var previous = timesheet.AuditData.OrderByDescending(t => t.Change).FirstOrDefault();
+            if (previous != null) {
+                audit.PreviousStatus = previous.NewStatus;
+            }else
+            {
+                audit.PreviousStatus = audit.PreviousStatus = entity.TimesheetStatus.Submitted; 
+            }
+            audit.NewStatus = entity.TimesheetStatus.Rejected;
+            audit.Change = DateTime.Now;
+            timesheet.Status = entity.TimesheetStatus.Rejected;
+            unitOfWork.AuditRepository.Add(audit);
+            unitOfWork.Commit();
+            return mapper.Map<Timesheet>(timesheet);
+        }
+
+        public List<Audit> GetHistory(int id)
+        {
+            var result = unitOfWork.AuditRepository.Find(t => t.Timesheet.Id == id);
+            return mapper.Map<IEnumerable<entity.Audit>, List<Audit>>(result);
         }
     }
 }

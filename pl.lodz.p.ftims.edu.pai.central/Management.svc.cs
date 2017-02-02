@@ -166,7 +166,7 @@ namespace pl.lodz.p.ftims.edu.pai.central
 
         public List<Audit> GetTimesheetHistory(string id, int start = 0, int limit = 0)
         {
-            throw new NotImplementedException();
+            return businessService.GetHistory(int.Parse(id));
         }
 
         public List<Timesheet> GetTimesheets(int start = 0, int limit = 0)
@@ -227,7 +227,7 @@ namespace pl.lodz.p.ftims.edu.pai.central
 
         public List<Timesheet> GetTimesheetsNeedAction(string id)
         {
-            throw new NotImplementedException();
+            return businessService.GetTimesheetNeedsAction(int.Parse(id), 0, 0);
         }
 
         public Timesheet CreateTimesheet(CreateTimesheet createTimesheet)
@@ -235,14 +235,14 @@ namespace pl.lodz.p.ftims.edu.pai.central
             return businessService.CreateTimesheet(createTimesheet);
         }
 
-        public Timesheet AcceptTimesheet(string id, CreateAudit createAudit)
+        public Timesheet AcceptTimesheet(string id, string employeeId)
         {
-            throw new NotImplementedException();
+            return businessService.AcceptTimesheet(int.Parse(id), int.Parse(employeeId));
         }
 
-        public Timesheet RejectTimesheet(string id, CreateAudit createAudit)
+        public Timesheet RejectTimesheet(string id, string employeeId)
         {
-            throw new NotImplementedException();
+            return businessService.RejectTimesheet(int.Parse(id), int.Parse(employeeId));
         }
     }
 }

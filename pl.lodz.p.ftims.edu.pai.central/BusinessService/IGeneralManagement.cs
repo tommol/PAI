@@ -44,5 +44,10 @@ namespace pl.lodz.p.ftims.edu.pai.central.BusinessService
         List<Employee> EmployeesInBranch(int id, int start = 0, int limit = 0);
         List<Timesheet> GetTimesheetNeedsAction(int employeeId,int start = 0, int limit = 0);
         Timesheet CreateTimesheet(CreateTimesheet timesheet);
+
+        Timesheet AcceptTimesheet(int id, int employeeId);
+        Timesheet RejectTimesheet(int id, int employeeId);
+        List<Audit> GetHistory(int id);
+
     }
 }

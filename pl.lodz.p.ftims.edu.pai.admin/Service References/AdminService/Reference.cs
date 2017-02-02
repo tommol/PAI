@@ -195,6 +195,24 @@ namespace pl.lodz.p.ftims.edu.pai.admin.AdminService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/GetTimesheetHistory", ReplyAction="http://tempuri.org/IManagement/GetTimesheetHistoryResponse")]
         System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.central.dto.Audit[]> GetTimesheetHistoryAsync(string id, int start, int limit);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/CreateTimesheet", ReplyAction="http://tempuri.org/IManagement/CreateTimesheetResponse")]
+        pl.lodz.p.ftims.edu.pai.central.dto.Timesheet CreateTimesheet([System.ServiceModel.MessageParameterAttribute(Name="createTimesheet")] pl.lodz.p.ftims.edu.pai.central.dto.CreateTimesheet createTimesheet1);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/CreateTimesheet", ReplyAction="http://tempuri.org/IManagement/CreateTimesheetResponse")]
+        System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.central.dto.Timesheet> CreateTimesheetAsync(pl.lodz.p.ftims.edu.pai.central.dto.CreateTimesheet createTimesheet);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/AcceptTimesheet", ReplyAction="http://tempuri.org/IManagement/AcceptTimesheetResponse")]
+        pl.lodz.p.ftims.edu.pai.central.dto.Timesheet AcceptTimesheet(string id, string employeeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/AcceptTimesheet", ReplyAction="http://tempuri.org/IManagement/AcceptTimesheetResponse")]
+        System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.central.dto.Timesheet> AcceptTimesheetAsync(string id, string employeeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/RejectTimesheet", ReplyAction="http://tempuri.org/IManagement/RejectTimesheetResponse")]
+        pl.lodz.p.ftims.edu.pai.central.dto.Timesheet RejectTimesheet(string id, string employeeId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/RejectTimesheet", ReplyAction="http://tempuri.org/IManagement/RejectTimesheetResponse")]
+        System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.central.dto.Timesheet> RejectTimesheetAsync(string id, string employeeId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagement/GetBranch", ReplyAction="http://tempuri.org/IManagement/GetBranchResponse")]
         pl.lodz.p.ftims.edu.pai.central.dto.Branch GetBranch(string id);
         
@@ -491,6 +509,30 @@ namespace pl.lodz.p.ftims.edu.pai.admin.AdminService {
         
         public System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.central.dto.Audit[]> GetTimesheetHistoryAsync(string id, int start, int limit) {
             return base.Channel.GetTimesheetHistoryAsync(id, start, limit);
+        }
+        
+        public pl.lodz.p.ftims.edu.pai.central.dto.Timesheet CreateTimesheet(pl.lodz.p.ftims.edu.pai.central.dto.CreateTimesheet createTimesheet1) {
+            return base.Channel.CreateTimesheet(createTimesheet1);
+        }
+        
+        public System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.central.dto.Timesheet> CreateTimesheetAsync(pl.lodz.p.ftims.edu.pai.central.dto.CreateTimesheet createTimesheet) {
+            return base.Channel.CreateTimesheetAsync(createTimesheet);
+        }
+        
+        public pl.lodz.p.ftims.edu.pai.central.dto.Timesheet AcceptTimesheet(string id, string employeeId) {
+            return base.Channel.AcceptTimesheet(id, employeeId);
+        }
+        
+        public System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.central.dto.Timesheet> AcceptTimesheetAsync(string id, string employeeId) {
+            return base.Channel.AcceptTimesheetAsync(id, employeeId);
+        }
+        
+        public pl.lodz.p.ftims.edu.pai.central.dto.Timesheet RejectTimesheet(string id, string employeeId) {
+            return base.Channel.RejectTimesheet(id, employeeId);
+        }
+        
+        public System.Threading.Tasks.Task<pl.lodz.p.ftims.edu.pai.central.dto.Timesheet> RejectTimesheetAsync(string id, string employeeId) {
+            return base.Channel.RejectTimesheetAsync(id, employeeId);
         }
         
         public pl.lodz.p.ftims.edu.pai.central.dto.Branch GetBranch(string id) {

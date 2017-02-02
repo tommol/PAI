@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<pl.lodz.p.ftims.edu.pai.web.Models.TimesheetListItemViewModel>
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Ocena kart";
 }
 
-<h2>View</h2>
+<h2>Karty do przeglądu</h2>
 
 <table class="table">
     <tr>
@@ -15,26 +15,44 @@
             @Html.DisplayNameFor(model => model.EndPeriod)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.status)
+            @Html.DisplayNameFor(model => model.Status)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartPeriod)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndPeriod)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.status)
-        </td>
-        <td>
-            @Html.ActionLink("Podgląd", "Details", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartPeriod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndPeriod)
+            </td>
+            <td>
+                @if (item.Status == 0)
+                {
+                    <span class="label label-info">
+                        Wysłany
+                    </span>
+                }
+                @if (item.Status == 1)
+                {
+                    <span class="label label-success">
+                        Zaakceptowany
+                    </span>
+                }
+                @if (item.Status == 3)
+                {
+                    <span class="label label-danger">Odrzucony</span>
+                }
+            </td>
+            <td>
+                <div class="btn-group btn-group-sm" role="group">
+                    @Html.ActionLink("Podgląd", "View", new { id = item.Id }, new { @class = "btn btn-default" })
+                </div>
+            </td>
+        </tr>
+    }
 
 </table>

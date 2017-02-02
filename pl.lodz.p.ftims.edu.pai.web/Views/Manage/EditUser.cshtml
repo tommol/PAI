@@ -1,29 +1,20 @@
 ﻿@model pl.lodz.p.ftims.edu.pai.web.Models.EditUserViewModel
 
 @{
-    ViewBag.Title = "EditUser";
+    ViewBag.Title = "Edycja użytkownika";
 }
 
-<h2>EditUser</h2>
+<h2>Edycja użytkownika</h2>
 
 
-@using (Html.BeginForm("SaveUser","Manage",FormMethod.Post))
+@using (Html.BeginForm("SaveUser", "Manage", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>UserDetailsViewModel</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ApiId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ApiId, new { htmlAttributes = new { @class = "form-control",@readonly=true } })
-                @Html.ValidationMessageFor(model => model.ApiId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @Html.HiddenFor(model => model.ApiId)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -53,23 +44,23 @@
             <div class="col-md-10">
                 @for (var i = 0; i < Model.Roles.Count(); i++)
                 {
-                    @Html.HiddenFor(model => model.Roles[i].Id)
-                    @Html.CheckBoxFor(model => model.Roles[i].Selected)
-                    @Html.LabelFor(model => model.Roles[i].Name, Model.Roles[i].Name)
+                    <span class="role-control">
+                        @Html.HiddenFor(model => model.Roles[i].Id)
+                        @Html.CheckBoxFor(model => model.Roles[i].Selected)
+                        @Html.LabelFor(model => model.Roles[i].Name, Model.Roles[i].Name)
+                    </span>
                 }
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
+                @Html.ActionLink("Powrót", "Users", new { }, htmlAttributes: new { @class = "btn btn-link" })
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Powrót", "Users", new { }, htmlAttributes: new { @class = "btn btn-link" })
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
